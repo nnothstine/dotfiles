@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+__nan_maybemkdir() {
+  if [[ ! -d "$1" ]]; then
+    __nan_status "Directory ${1} does not exist."
+    if [[ -z "$CI" ]]; then
+      read "REPLY?          Create? [y/N] "
+      [[ ! $REPLY =~ ^[Yy]$ ]] && return 1
+    fi
+    mkdir -p -- "$1" && __nan_ok "Created ${1}."
+  fi
+}

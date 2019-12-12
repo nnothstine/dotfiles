@@ -1,0 +1,40 @@
+#!/usr/bin/env zsh
+
+. "${0:A:h}/env"
+. "${DOTFILES}/lib/loggers.sh"
+SEP='.'
+
+# ============================================================================
+# Topics
+# ============================================================================
+
+__topics() {
+  local topics; topics=( "$DOTFILES_DATA"/*.topic(N) )
+  echo ${${${topics[@]#$DOTFILES_DATA/}%.topic}/$SEP//}
+}
+
+# ============================================================================
+# Usage
+# ============================================================================
+
+if [[ $ZSH_EVAL_CONTEXT != *:file ]]; then
+    while getopts cdhLt opt; do
+        case $opt in
+            c) CLEAN=1 ;;
+            d) REMOVE=1 ;;
+            h) cat <<EOL
+Usage: ${0:A:t} [-cdLt] [TOPIC...]
+  -c   Afterwards, remove dead symlinks and empty dot directories in $HOME.
+       Can be used alone to clean \$HOME.
+  -d   Disable and unlink topic(s)
+  -L   List enabled topics
+  -t   Do a test run; do not actually do anything
+EOL
+          exit ;;
+            *) >&2 echo-fail "Aborted."
+                exit 1 ;;
+        esac
+    done
+
+    shift "$((OPTIND-1))"
+fi
