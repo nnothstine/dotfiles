@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+source "${0:A:h}/../../deploy"
+
+install() {
+    if ! __nan_has brew; then
+        # TODO: What happens to this when /usr/bin/ruby goes away?
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+    brew install wget
+}
+
+update() {
+    if __nan_prefer brew; then
+        brew update && brew upgrade && brew cleanup
+    else
+        __nan_err "homebrew not detected"
+    fi
+}
+
+init "$@"

@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 . "${0:A:h}/env"
+. "${DOTFILES}/lib/helpers.sh"
 . "${DOTFILES}/lib/loggers.sh"
 SEP='.'
 
@@ -8,10 +9,79 @@ SEP='.'
 # Topics
 # ============================================================================
 
+topic-enabled-p() { [[ -L "$(__topic_path $1)" ]] }
+__topic_path() { echo "$DOTFILES_DATA/${1/\//$SEP}.topic" }
+
 __topics() {
   local topics; topics=( "$DOTFILES_DATA"/*.topic(N) )
   echo ${${${topics[@]#$DOTFILES_DATA/}%.topic}/$SEP//}
 }
+
+__topic_do() {
+    if [[ -e "$1/_init" ]]; then
+        if [[ ! -x "$1/_init" ]]; then
+            __nan_err "$1's init script isn't executable."
+            return 1
+        fi
+        export TOPIC=$1
+        pushd -q $1
+        __nan_exec ./_init $2
+        popd -q
+        return $!
+    fi
+}
+
+__topic_init() {
+    for topic in $@; do
+        if [[ ! -d $topic ]]; then
+            __nan_err "$topic doesn't exist!"
+            continue
+        fi
+        __nan_ok "$topic"
+
+        local tpath="$DOTFILES/$topic"
+        local tsympath="$(__topic_path $topic)"
+        if [[ -n $LINK ]] || ! topic-enabled-p $topic; then
+            local op=install
+            __nan_link $tpath $tsympath
+            __topic_do $topic link
+        fi
+
+        if [[ -z $INHIBIT_INIT ]]; then
+            __topic_do $topic ${FORCE_OP:-${op:-update}}
+            if [[ $op == install && $? != 0 ]]; then
+                __topic_remove $topic
+            fi
+        fi
+    done
+}
+
+init() {
+    declare -f $1 >/dev/null || return 1
+    __nan_echo "$TOPIC.init.$1: start"
+    $1
+    local retval=$?
+    __nan_ok "$TOPIC.init.$1: done"
+    return $retval
+}
+
+__topic_remove() {
+  for topic in $@; do
+    if [[ ! -d $topic ]]; then
+      __nan_err "$topic doesn't exist."
+      continue
+    elif ! topic-enabled-p $topic; then
+      __nan_err "$topic isn't enabled."
+      continue
+    fi
+
+    [[ -z $INHIBIT_INIT ]] && __topic_do $topic clean
+    __nan_exec rm -f "$(__topic_path $topic)" && \
+      __nan_ok "Removed $topic." || \
+      __nan_err "Couldn't remove $topic."
+  done
+}
+
 
 # ============================================================================
 # Usage
@@ -31,10 +101,23 @@ Usage: ${0:A:t} [-cdLt] [TOPIC...]
   -t   Do a test run; do not actually do anything
 EOL
           exit ;;
-            *) >&2 echo-fail "Aborted."
+            L) LIST=1 ;;
+            *) >&2 __nan_err "Aborted."
                 exit 1 ;;
         esac
     done
 
-    shift "$((OPTIND-1))"
+    shift $((OPTIND-1))
+    if [[ -n $LIST ]]; then
+        __topics | tr ' ' $'\n'
+    else
+        pushd -qL "$DOTFILES"
+        if [[ -n $REMOVE ]]; then
+            __topic_remove ${TARGETS:-$@}
+        else
+            __topic_init ${TARGETS:-$@}
+        fi
+        [[ -n $CLEAN ]] && clean
+        popd -q
+    fi
 fi
