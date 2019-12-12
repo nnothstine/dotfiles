@@ -18,4 +18,8 @@ update() {
     fi
 }
 
+link() {
+    __nan_link dot.hushlogin ~/.hushlogin
+}
+
 init "$@"

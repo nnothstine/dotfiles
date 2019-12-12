@@ -71,26 +71,30 @@ __nan_same() {
 }
 
 __nan_link() {
-  if [[ $1 == "-s" ]]; then
+  if [[ $1 == '-s' ]]; then
     local dosudo=1
     shift
   fi
   local flags="-svf"
   local dest=${@[-1]}
   local srcs; srcs=( ${@:1:-1} )
-  # I have no idea what the purpose of this part is, tbqh
   if [[ $dest == */ && ! -d $dest ]]; then
     mkdir -p $dest
   elif [[ ! -d ${dest%/*} ]]; then
     mkdir -p ${dest%/*}
   fi
-  for lnk in ${srcs[@]}; do
+  for lk in ${srcs[@]}; do
     local src
+    case $lk in
+      /*) src=$lk ;;
+      .)  src="$(__topic_path $TOPIC)" ;;
+      *)  src="$(__topic_path $TOPIC)/$lk" ;;
+    esac
     if [[ -d $src ]]; then
       if [[ $dest != */ && -d $dest && -L $dest ]]; then
         ${dosudo:+sudo} rm -fv $dest
       fi
     fi
+    __nan_exec ${dosudo:+sudo} ln $flags $src $dest
   done
-  __nan_exec ${dosudo:+sudo} ln $flags $srcs $dest
 }
