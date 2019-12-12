@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+
+# install() {}
+
+# update() {}
+
+link() {
+    __nan_link logrc ~/.logrc
+}
+
+clean() {
+    rm -fv ~/.logrc
+}
+
+init "$@"

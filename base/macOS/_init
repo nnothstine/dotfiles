@@ -8,6 +8,7 @@ install() {
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     fi
     brew install wget
+    cp -a /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SFMono-* /Library/Fonts
 }
 
 update() {
@@ -19,7 +20,7 @@ update() {
 }
 
 link() {
-    __nan_link dot.hushlogin ~/.hushlogin
+    __nan_link .hushlogin ~/.hushlogin
 }
 
 init "$@"
