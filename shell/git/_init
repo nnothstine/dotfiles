@@ -9,7 +9,7 @@ install() {
 }
 
 link() {
-    __nan_link {config, ignore} $GIT_DIR/
+    __nan_link {config,ignore} $GIT_DIR/
 }
 
 # update() {}
