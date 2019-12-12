@@ -23,3 +23,4 @@ alias ag="ag -p $XDG_CONFIG_HOME/ag/agignore"
 alias rg='rg'
 
 alias log='/usr/bin/log'
+alias cdd="cd $DOTFILES"

@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+
+install() {
+    case $(__os) in
+        macos) __nan_has code || brew cask install visual-studio-code
+    esac
+}
+
+link() {
+    case $(__os) in
+        macos) VSCODE_DIR="$HOME/Library/Application Support/Code/User"
+        __nan_link keybindings.json $VSCODE_DIR/
+        __nan_link settings.json $VSCODE_DIR/
+        __nan_link global-defaults.code-snippets "$VSCODE_DIR/snippets/"
+        ;;
+    esac
+}
+
+clean() {
+    rm -fv "$VSCODE_DIR/keybindings.json"
+    rm -fv "$VSCODE_DIR/settings.json"
+    rm -fv "$VSCODE_DIR/snippets/global-defaults.code-snippets"
+    rm -rfv $HOME/.vscode
+    rm -rfv $XDG_CONFIG_HOME/vscode
+}
+
+init "$@"

@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+source env.zsh
+
+install() {
+    case $(__os) in
+        macos) brew install pipenv
+    esac
+}
+
+update() {
+    # TODO
+}
+
+link() {
+    # TODO
+}
+
+clean() {
+    rm -rfv $PYENV_ROOT
+}
+
+init "$@"

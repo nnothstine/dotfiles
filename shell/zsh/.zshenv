@@ -5,6 +5,7 @@ unsetopt GLOBAL_RCS
 source "$HOME/.dotfiles/env"
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZPLUGINDIR="$ZDOTDIR/zplugin"
 export ZSH_CACHE="$XDG_CACHE_HOME/zsh"
 
 typeset -gU cdpath fpath mailpath path
