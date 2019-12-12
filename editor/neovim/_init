@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+NVIM_INSTALL_DIR="$XDG_CONFIG_HOME/nvim"
+
+install() {
+    case $(__os) in
+        macos) __nan_has nvim || brew install neovim
+    esac
+}
+
+link() {
+    __nan_link $NVIM_INSTALL_DIR $XDG_CONFIG_HOME/vim
+}
+
+clean() {
+  rm -rfv $NVIM_INSTALL_DIR
+  rm -rfv $XDG_CONFIG_HOME/vim
+}
+
+init "$@"

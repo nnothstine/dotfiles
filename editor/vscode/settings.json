@@ -30,4 +30,5 @@
   "workbench.settings.enableNaturalLanguageSearch": false,
   "workbench.startupEditor": "newUntitledFile",
   "editor.codeLens": false,
+  "window.zoomLevel": 0,
 }

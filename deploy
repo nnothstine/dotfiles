@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
 . "${0:A:h}/env"
-. "${DOTFILES}/lib/helpers.sh"
-. "${DOTFILES}/lib/loggers.sh"
 SEP='.'
 
 # ============================================================================

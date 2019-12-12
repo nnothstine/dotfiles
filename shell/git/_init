@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+GIT_DIR="$XDG_CONFIG_HOME/git"
+
+install() {
+    case $(__os) in
+        macos) brew install git hub
+    esac
+}
+
+link() {
+    __nan_link {config, ignore} $GIT_DIR/
+}
+
+# update() {}
+
+clean() {
+    rm -rfv $GIT_DIR
+}
+
+init "$@"
