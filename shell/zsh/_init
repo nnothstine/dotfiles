@@ -8,11 +8,27 @@ install() {
     esac
 
     [[ $SHELL == */zsh ]] || chsh -s $(which zsh) $(whoami)
+    # TODO: Does this go somewhere else?
+    mkdir -p $ZSH_CACHE
 }
 
 link() {
     __nan_link .zsh* $ZDOTDIR/
+    __nan_link functions $ZDOTDIR/
     [[ $(__os) == macos ]] && __nan_link .zshenv ~/.zshenv
+}
+
+update() {
+    # [[ -e $ZPLUGINDIR/zplugin.zsh ]] && {
+
+    # }
+    zplugin update --all
+    zplugin self-update
+}
+
+clean() {
+    rm -rfv $ZDOTDIR
+    [[ $(__os) == macos ]] && rm -f ~/.zshenv
 }
 
 init "$@"
