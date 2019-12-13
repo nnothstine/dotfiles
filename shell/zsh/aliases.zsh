@@ -23,3 +23,4 @@ alias ag="ag -p $XDG_CONFIG_HOME/ag/agignore"
 alias rg='rg'
 
 alias cdd="cd $DOTFILES"
+alias dp="$DOTFILES/deploy"

@@ -6,6 +6,7 @@ install() {
     case $(__os) in
         macos) __nan_has kak || brew install kakoune
     esac
+    git clone https://github.com/andreyorst/plug.kak.git $KAK_INSTALL_DIR/plugins/plug.kak
 }
 
 link() {
