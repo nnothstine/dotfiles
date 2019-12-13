@@ -10,7 +10,7 @@ install() {
   esac
 
   __ensure_repo hlissner/doom-emacs ~/.emacs.d
-
+  __ensure_repo nnothstine/emacs-config $XDG_CONFIG_HOME/doom
 }
 
 update() {
@@ -18,7 +18,9 @@ update() {
   cd ~/.emacs.d/cask && git pull
 }
 
-# link() { }
+link() { 
+  ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
+}
 
 clean() { 
   rm -rfv ~/.emacs.d

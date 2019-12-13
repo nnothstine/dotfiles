@@ -9,7 +9,6 @@
   "editor.smoothScrolling": true,
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "recentlyUsed",
-  "editor.wordWrap": "on",
   "emmet.showSuggestionsAsSnippets": true,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,

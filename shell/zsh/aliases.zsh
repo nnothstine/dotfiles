@@ -19,8 +19,15 @@ alias mv='mv -i'
 alias mkdir='mkdir -p'
 alias wget='wget -c'                # Resume dl if possible
 
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+
 alias ag="ag -p $XDG_CONFIG_HOME/ag/agignore"
 alias rg='rg'
 
 alias cdd="cd $DOTFILES"
 alias dp="$DOTFILES/deploy"
+
+alias ydl-aac='youtube-dl --extract-audio --audio-format aac'
+alias ydl-m4a='youtube-dl --extract-audio --audio-format m4a'
