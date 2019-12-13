@@ -4,9 +4,15 @@ alias date=gdate
 alias y=pbcopy
 alias p=pbpaste
 
-alias br=brew
+alias b=brew
+alias bi='b install'
+alias bu='b uninstall'
+alias bs='b search'
 alias bru='brew update && brew upgrade && brew cleanup'
 alias brc='brew cask'
+
+# TODO: Don't always assume a username of nnothstine
+alias reallylogout='sudo launchctl bootout gui/$(id -u nnothstine)'
 
 # macOS has no `md5sum`, so use `md5` as a fallback
 __nan_has md5sum  || alias md5sum="md5"

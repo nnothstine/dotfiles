@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+case $OSTYPE in
+    darwin*) /usr/bin/open "$@" ;;
+    linux*) xdg-open "$@" ;;
+esac

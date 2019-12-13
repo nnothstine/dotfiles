@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+KAK_INSTALL_DIR="$XDG_CONFIG_HOME/kak"
+
+install() {
+    case $(__os) in
+        macos) __nan_has kak || brew install kakoune
+    esac
+}
+
+link() {
+    __nan_link kakrc $KAK_INSTALL_DIR/
+}
+
+clean() {
+    rm -rfv $KAK_INSTALL_DIR
+}
+
+init "$@"

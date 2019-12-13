@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 export DOTFILES="${HOME}/.dotfiles"
 set -e
@@ -9,23 +9,28 @@ __nan_has() { ! command -v "$1" >/dev/null; }
 
 # Linux setup
 
-if ! __nan_has zsh || __nan_has git; then
-    __nan_status "Installing git and/or zsh..."
-    if [[ -f /etc/arch-release ]]; then
-        sudo pacman --needed --noconfirm -S git zsh
-    elif [[ -f /etc/debian_version ]]; then
-        sudo apt-get update && sudo apt-get install -y git zsh
-    fi
-fi
+# if ! __nan_has zsh || __nan_has git; then
+#     __nan_status "Installing git and/or zsh..."
+#     if [[ -f /etc/arch-release ]]; then
+#         sudo pacman --needed --noconfirm -S git zsh
+#     elif [[ -f /etc/debian_version ]]; then
+#         sudo apt-get update && sudo apt-get install -y git zsh
+#     fi
+# fi
 
-if [[ ! -d ~/.dotfiles ]]; then
-    __nan_status "Deploying dotfiles repository..."
-    if [[ $USER == nnothstine ]]; then
-        dfrepo=git@github.com:nnothstine/dotfiles.git
-    else
-        dfrepo=https://github.com/nnothstine/dotfiles
-    fi
-    git clone --recursive "$dfrepo" "$DOTFILES"
-fi
+# if [[ ! -d ~/.dotfiles ]]; then
+#     __nan_status "Deploying dotfiles repository..."
+#     if [[ $USER == nnothstine ]]; then
+#         dfrepo=git@github.com:nnothstine/dotfiles.git
+#     else
+#         dfrepo=https://github.com/nnothstine/dotfiles
+#     fi
+#     git clone --recursive "$dfrepo" "$DOTFILES"
+# fi
 
 __nan_ok "Successfully cloned dotfiles."
+
+read "REPLY?Do you want to deploy the default configuration? [y/n] "
+[[ ! $REPLY =~ ^[yY]$ ]] && return 1 || {
+    $DOTFILES/deploy base/macos shell/{git,tmux,zsh} editor/kak
+}

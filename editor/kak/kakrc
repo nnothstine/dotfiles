@@ -1,0 +1,58 @@
+# ───────────────
+# User preferences
+# ───────────────
+
+# TODO: Use a variable here?
+declare-option str kdotdir "~/.dotfiles/editor/kak"
+
+colorscheme gruvbox
+
+# define-command ide %{
+#     rename-client main
+#     set-option global jumpclient main
+
+#     new rename-client tools
+#     set-option global toolsclient tools
+
+#     new rename-client docs
+#     set-option global docsclient docs
+# }
+# ranger-open-on-edit-directory
+
+# relative line numbers
+add-highlighter global/ number-lines -relative -hlcursor
+add-highlighter global/ show-matching
+add-highlighter global/ dynregex '%reg{/}' 0:+u
+
+# indentation
+set-option global tabstop     4
+set-option global indentwidth 4
+
+# plug.kak
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+source "%opt{kdotdir}/plugins.kak"
+source "%opt{kdotdir}/mappings.kak"
+source "%opt{kdotdir}/filetype.kak"
+
+# aliases
+alias global colo colorscheme
+alias global bd   delete-buffer
+alias global bd!  delete-buffer!
+alias global pi   plug-install
+
+define-command edit-plugins -command-completion -docstring "Edit kakoune plugins" %{
+	e "%opt{kdotdir}/plugins.kak"	
+}
+
+define-command edit-mappings -command-completion -docstring "Edit kakoune mappings" %{
+	e "%opt{kdotdir}/mappings.kak"	
+}
+
+define-command edit-filetype -command-completion -docstring "Edit kakoune filetype-specific information" %{
+	e "%opt{kdotdir}/filetype.kak"	
+}
+
+hook global BufOpenFile .* %{ editorconfig-load }
+hook global BufNewFile .* %{ editorconfig-load }
+hook global WinCreate .* %{ auto-pairs-enable }
+
