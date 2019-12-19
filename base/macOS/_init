@@ -9,6 +9,7 @@ install() {
     fi
     brew install wget
     cp -a /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SFMono-* /Library/Fonts
+    mkdir ~/Projects ~/Sandbox
 }
 
 update() {
