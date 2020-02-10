@@ -11,11 +11,22 @@ if __nan_has zplugin; then
     fi
 fi
 
+# ============================================================================
+# Modules
+# ============================================================================
+
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html
+# Completion listing extensions
+zmodload zsh/complist
+
+# ============================================================================
+# Load order
+# ============================================================================
 
 source "$DOTFILES/shell/zsh/prompt.zsh"
 source "$DOTFILES/shell/zsh/config.zsh"
-source "$DOTFILES/shell/zsh/completion.zsh"
 source "$DOTFILES/shell/zsh/keybindings.zsh"
+source "$DOTFILES/shell/zsh/completion.zsh"
 
 autoload -Uz compinit
 autoload -Uz _zplugin
