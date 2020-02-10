@@ -19,11 +19,11 @@ link() {
 }
 
 update() {
-    # [[ -e $ZPLUGINDIR/zplugin.zsh ]] && {
+    # [[ -e $ZINITDIR/zinit.zsh ]] && {
 
     # }
-    zplugin update --all
-    zplugin self-update
+    zinit update --all
+    zinit self-update
 }
 
 clean() {

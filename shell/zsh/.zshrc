@@ -1,14 +1,9 @@
-__load_repo zdharma/zplugin $ZPLUGINDIR zplugin.zsh
+__load_repo zdharma/zinit $ZINITDIR zinit.zsh
 
-if __nan_has zplugin; then
-    zplugin lucid wait'[[ -n ${ZLAST_COMMANDS[(r)man*]} ]]'
-    zplugin snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
-
-    if [[ -z $SSH_CONNECTION ]]; then
-        # TODO: Super slow with man pages right now; remove atload when fixed
-        zplugin lucid wait'1' atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay;" atload"unset 'FAST_HIGHLIGHT[chroma-whatis]' 'FAST_HIGHLIGHT[chroma-man]'"
-        zplugin load 'zdharma/fast-syntax-highlighting'
-    fi
+if __nan_has zinit; then
+    source "$DOTFILES/shell/zsh/zinit.zsh"
+else
+    echo "Failed to load zinit. Check your settings."
 fi
 
 # ============================================================================
@@ -29,8 +24,8 @@ source "$DOTFILES/shell/zsh/keybindings.zsh"
 source "$DOTFILES/shell/zsh/completion.zsh"
 
 autoload -Uz compinit
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Requires EXTENDED_GLOB=true; run compinit once every 24 hours, not on demand
 if [[ -n "$ZSH_CACHE/zcompdump"(#qN.mh+24) ]]; then
