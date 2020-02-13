@@ -14,6 +14,9 @@ alias brc='brew cask'
 # TODO: Don't always assume a username of nnothstine
 alias reallylogout='sudo launchctl bootout gui/$(id -u nnothstine)'
 
+alias las="cd $HOME/Library/Application Support"
+alias rlas="cd /Library/Application Support"
+
 # macOS has no `md5sum`, so use `md5` as a fallback
 __nan_has md5sum  || alias md5sum="md5"
 # macOS has no `sha1sum`, so use `shasum` as a fallback
