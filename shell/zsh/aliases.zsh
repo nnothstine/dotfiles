@@ -31,6 +31,8 @@ alias curl="curl --config '${DOTFILES}/shell/curl/curlrc'"
 alias cdd="cd $DOTFILES"
 alias dp="$DOTFILES/deploy"
 
+alias sshkeygen="ssh-keygen -t rsa -b 4096 -C"
+
 alias t="tree -a --noreport --dirsfirst -I '.git|node_modules|bower_components|.DS_Store'"
 
 alias ydl-aac='youtube-dl --extract-audio --audio-format aac'
