@@ -1,0 +1,26 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+source .zshenv
+
+install() {
+    case $(__os) in
+    macos*) brew install fish ;;
+    esac
+
+    __nan_link ./config.fish "$XDG_CONFIG_HOME/fish"
+}
+
+link() {
+}
+
+update() {
+}
+
+clean() {
+    [[ $(__os) == macos ]] && {
+        brew uninstall fish
+        sudo sed '/\/usr\/local\/bin\/fish/d' /etc/shells
+    }
+}
+
+init "$@"

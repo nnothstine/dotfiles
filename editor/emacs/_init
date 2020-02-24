@@ -3,10 +3,11 @@ source ${0:A:h}/../../deploy
 
 install() {
   case $(__os) in
-    macos)  brew tap d12frosted/emacs-plus
-            brew install emacs-plus --without-spacemacs-icon --with-modern-icon
-            ;;
-    arch)   yay --needed --noconfirm -S make emacs ;;
+  macos)
+    brew tap d12frosted/emacs-plus
+    brew install emacs-plus --without-spacemacs-icon --with-modern-icon
+    ;;
+  arch) yay --needed --noconfirm -S make emacs ;;
   esac
 
   __ensure_repo hlissner/doom-emacs ~/.emacs.d
@@ -18,14 +19,14 @@ update() {
   cd ~/.emacs.d/cask && git pull
 }
 
-link() { 
+link() {
   ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
 }
 
-clean() { 
+clean() {
   rm -rfv ~/.emacs.d
   case $(__os) in
-    macos) brew untap d12frosted/emacs-plus
+  macos) brew untap d12frosted/emacs-plus ;;
   esac
 }
 

@@ -4,7 +4,7 @@ source .zshenv
 
 install() {
     case $(__os) in
-        macos) brew install sk ;;
+    macos) brew install sk ;;
     esac
 
     [[ $SHELL == */zsh ]] || chsh -s $(which zsh) $(whoami)
