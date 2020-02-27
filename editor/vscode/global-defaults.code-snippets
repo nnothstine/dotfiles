@@ -16,7 +16,7 @@
 	// 	"description": "Log output to console"
 	// }
 	"Shell script body comment box": {
-		"scope": "shellscript",
+		"scope": "shellscript,properties",
 		"prefix": "cb-",
 		"body": [
 			"# ----------------------------------------------------------------------------",
@@ -25,7 +25,7 @@
 		]
 	},
 	"Shell script heading comment box": {
-		"scope": "shellscript",
+		"scope": "shellscript,properties",
 		"prefix": "cb=",
 		"body": [
 			"# ============================================================================",

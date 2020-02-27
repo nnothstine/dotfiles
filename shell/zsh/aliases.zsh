@@ -1,12 +1,11 @@
-
-autoload -U zmv 
+autoload -U zmv
 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias -- -='cd -'
 
-alias ln="${aliases[ln]:-ln} -v"  # verbose ln
+alias ln="${aliases[ln]:-ln} -v" # verbose ln
 alias l='ls -1'
 alias ll='ls -l'
 alias la='LC_COLLATE=C ls -la'
@@ -17,7 +16,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 alias mkdir='mkdir -p'
-alias wget='wget -c'                # Resume dl if possible
+alias wget='wget -c' # Resume dl if possible
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -33,7 +32,14 @@ alias dp="$DOTFILES/deploy"
 
 alias sshkeygen="ssh-keygen -t rsa -b 4096 -C"
 
+alias mine='sudo chown -R "$USER"'
+alias root='sudo -s'
+alias se='sudo -e'
+
 alias t="tree -a --noreport --dirsfirst -I '.git|node_modules|bower_components|.DS_Store'"
+
+alias tmux='tmux -f "${DOTFILES}/shell/tmux/tmux.conf"'
+alias ta='tmux attach'
 
 alias ydl-aac='youtube-dl --extract-audio --audio-format aac'
 alias ydl-m4a='youtube-dl --extract-audio --audio-format m4a'
