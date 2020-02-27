@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+source .zshenv
+
+install() {
+    case $(__os) in
+    macos*) brew install tmux ;;
+    esac
+}
+
+link() {
+}
+
+update() {
+}
+
+clean() {
+    [[ $(__os) == macos ]] && {
+        brew uninstall tmux
+    }
+}
+
+init "$@"
