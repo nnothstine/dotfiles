@@ -24,6 +24,9 @@ unsetopt CHECK_JOBS       # Don't report on jobs when shell exit.
 HISTFILE="$XDG_CACHE_HOME/zhistory"
 HISTSIZE=1000                    # Max events to store in internal history.
 SAVEHIST=1000                    # Max events to store in history file.
+export HISTCONTROL=ignoredups
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+
 
 setopt BANG_HIST                 # Don't treat '!' specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
@@ -51,3 +54,9 @@ setopt MULTIOS              # Write to multiple descriptors.
 setopt EXTENDED_GLOB        # Use extended globbing syntax.
 unsetopt GLOB_DOTS
 unsetopt AUTO_NAME_DIRS     # Don't add variable-stored paths to ~ list.
+
+export PAGER='less'
+export GIT_PAGER="$PAGER"
+
+export MANWIDTH=88
+export MANPAGER="$PAGER"
