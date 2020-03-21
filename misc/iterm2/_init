@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+
+install() {
+    case $(__os) in
+    macos)
+        brew cask install iterm2
+        ;;
+    esac
+}
+
+# update() {
+# }
+
+link() {
+    # ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
+    defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES/misc/iterm2"
+    defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+    # ln -sf
+}
+
+clean() {
+    rm -rfv ~/.emacs.d
+    case $(__os) in
+    macos) brew untap d12frosted/emacs-plus ;;
+    esac
+}
+
+init "$@"

@@ -32,5 +32,5 @@ __nan_ok "Successfully cloned dotfiles."
 
 read "REPLY?Do you want to deploy the default configuration? [y/n] "
 [[ ! $REPLY =~ ^[yY]$ ]] && return 1 || {
-    $DOTFILES/deploy base/macos shell/{git,tmux,zsh} editor/kak
+    $DOTFILES/deploy base/macos shell/{git,tmux,zsh} editor/neovim
 }

@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+source env.zsh
+
+install() {
+    case $(__os) in
+    macos*) brew install elixir ;;
+    esac
+}
+
+update() {
+}
+
+# link() {}
+
+clean() {
+    case $(__os) in
+    macos*) brew uninstall elixir ;;
+    esac
+}
+
+init "$@"

@@ -6,7 +6,6 @@ alias ....='cd ../../..'
 alias -- -='cd -'
 
 alias ln="${aliases[ln]:-ln} -v" # verbose ln
-# alias ls="ls --color=auto"
 alias l='ls -1'
 alias ll='ls -l'
 alias la='LC_COLLATE=C ls -la'

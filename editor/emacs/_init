@@ -6,21 +6,24 @@ install() {
   macos)
     brew tap d12frosted/emacs-plus
     brew install emacs-plus --without-spacemacs-icon --with-modern-icon
+    ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
     ;;
   arch) yay --needed --noconfirm -S make emacs ;;
   esac
 
   __ensure_repo hlissner/doom-emacs ~/.emacs.d
   __ensure_repo nnothstine/emacs-config $XDG_CONFIG_HOME/doom
+  ~/.emacs.d/bin/doom install --doomdir $XDG_CONFIG_HOME/doom
 }
 
 update() {
   cd ~/.emacs.d && YES=1 make update
   cd ~/.emacs.d/cask && git pull
+  ~/.emacs.d/bin/doom upgrade
 }
 
 link() {
-  ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
+  # ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
 }
 
 clean() {
