@@ -12,8 +12,12 @@ alias b=brew
 alias bi='b install'
 alias bu='b uninstall'
 alias bs='b search'
-alias bru='brew update && brew upgrade && brew cleanup'
+
 alias brc='brew cask'
+alias brci='brc install'
+alias brcu='brc uninstall'
+alias brcr='brc reinstall'
+alias bru='brew update && brew upgrade && brew cleanup'
 
 # TODO: Don't always assume a username of nnothstine
 alias reallylogout='sudo launchctl bootout gui/$(id -u nnothstine)'

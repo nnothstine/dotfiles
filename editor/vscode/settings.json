@@ -102,4 +102,7 @@
   "workbench.statusBar.visible": true,
   "emmet.triggerExpansionOnTab": true,
   "git.enableSmartCommit": true,
+  "files.associations": {
+    "vimrc": "viml"
+  },
 }

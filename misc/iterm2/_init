@@ -13,10 +13,8 @@ install() {
 # }
 
 link() {
-    # ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
     defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES/misc/iterm2"
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
-    # ln -sf
 }
 
 clean() {

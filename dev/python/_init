@@ -4,11 +4,10 @@ source env.zsh
 
 install() {
     case $(__os) in
-        macos) brew install pyenv pipenv
+    macos) brew install pyenv pipenv ;;
     esac
-    # TODO: Is there a reasonable way of making this more generic?
-    pyenv install 3.8.1
-    pyenv install 2.7.17
+    pyenv install $(pyenv install --list | grep '[[:blank:]]3' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1)
+    pyenv install $(pyenv install --list | grep '[[:blank:]]2' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1)
 }
 
 update() {

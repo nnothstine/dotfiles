@@ -3,7 +3,7 @@ autoload -U zmv
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias -- -='cd -'
+# alias --='cd -'
 
 alias ln="${aliases[ln]:-ln} -v" # verbose ln
 alias l='ls -1'
@@ -30,16 +30,21 @@ alias curl="curl --config '${DOTFILES}/shell/curl/curlrc'"
 alias cdd="cd $DOTFILES"
 alias dp="$DOTFILES/deploy"
 
+alias e="$EDITOR"
+
 alias sshkeygen="ssh-keygen -t rsa -b 4096 -C"
 
 alias mine='sudo chown -R "$USER"'
 alias root='sudo -s'
 alias se='sudo -e'
 
+alias resrc=". ${DOTFILES}/shell/zsh/.zshrc"
+
 alias t="tree -a --noreport --dirsfirst -I '.git|node_modules|bower_components|.DS_Store'"
 
 alias tmux='tmux -f "${DOTFILES}/shell/tmux/tmux.conf"'
 alias ta='tmux attach'
+alias tks='tmux kill-server'
 
 alias ydl-aac='youtube-dl --extract-audio --audio-format aac'
 alias ydl-m4a='youtube-dl --extract-audio --audio-format m4a'
