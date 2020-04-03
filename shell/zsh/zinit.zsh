@@ -17,14 +17,15 @@ export ZSH_BOOKMARKS="$XDG_DATA_HOME/zshbookmarks"
 # # ----------------------------------------------------------------------------
 
 # zinit lucid wait'[[ -n ${ZLAST_COMMANDS[(r)man*]} ]]'
+zinit lucid trigger-load'!man'
 zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 
-# zinit lucid wait blockf atpull'zinit creinstall -q .'
+zinit lucid wait blockf atpull'zinit creinstall -q .'
 zinit load 'zsh-users/zsh-completions'
 
 if [[ -z $SSH_CONNECTION ]]; then
   # TODO: Super slow with man pages right now; remove atload when fixed
-  # zinit lucid wait'1' atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay;" atload"unset 'FAST_HIGHLIGHT[chroma-whatis]' 'FAST_HIGHLIGHT[chroma-man]'"
+  zinit lucid wait atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay;" atload"unset 'FAST_HIGHLIGHT[chroma-whatis]' 'FAST_HIGHLIGHT[chroma-man]'"
   zinit load 'zdharma/fast-syntax-highlighting'
 
   zinit ice pick"async.zsh" atload"prompt_pure_setup" src"pure.zsh"

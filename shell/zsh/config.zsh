@@ -54,8 +54,18 @@ setopt EXTENDED_GLOB     # Use extended globbing syntax.
 unsetopt GLOB_DOTS
 unsetopt AUTO_NAME_DIRS # Don't add variable-stored paths to ~ list.
 
+# Make documentation findable again
+unalias run-help
+autoload run-help
+
 export PAGER='less'
 export GIT_PAGER="$PAGER"
 
 export MANWIDTH=88
 export MANPAGER="$PAGER"
+
+# ==========================================================================
+# FZF
+# ==========================================================================
+
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --ignore-file \"${DOTFILES}/shell/ag/dot.ignore\""

@@ -16,6 +16,8 @@ bindkey -M viins '^a' beginning-of-line
 bindkey -M viins '^e' end-of-line
 bindkey -M viins '^d' push-line-or-edit
 bindkey -M vicmd '^k' kill-line
+# bindkey '^h' backward-delete-char
+bindkey -M viins '^?' backward-delete-char
 bindkey -M vicmd 'H' run-help
 # Shift + Tab
 bindkey -M viins '^[[Z' reverse-menu-complete

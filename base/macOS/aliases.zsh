@@ -22,8 +22,8 @@ alias bru='brew update && brew upgrade && brew cleanup'
 # TODO: Don't always assume a username of nnothstine
 alias reallylogout='sudo launchctl bootout gui/$(id -u nnothstine)'
 
-alias las="$HOME/Library/Application Support"
-alias rlas="/Library/Application Support"
+# alias las="$HOME/Library/Application Support"
+# alias rlas="/Library/Application Support"
 
 # macOS has no `md5sum`, so use `md5` as a fallback
 __nan_has md5sum || alias md5sum="md5"

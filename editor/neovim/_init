@@ -12,10 +12,11 @@ install() {
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     __nan_ok "Installed plug.vim."
+    __ensure_repo nnothstine/nvim $XDG_CONFIG_HOME/nvim
 }
 
 link() {
-    __nan_link $NVIM_INSTALL_DIR $XDG_CONFIG_HOME/vim
+    # __nan_link $NVIM_INSTALL_DIR $XDG_CONFIG_HOME/vim
 }
 
 clean() {

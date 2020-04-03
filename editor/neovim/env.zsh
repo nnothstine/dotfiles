@@ -1,3 +1,3 @@
-export VDOTDIR=$HOME/github/nvim
+export VDOTDIR=$XDG_CONFIG_HOME/nvim
 export EDITOR=nvim
 export VISUAL=$EDITOR

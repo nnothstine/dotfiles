@@ -1023,7 +1023,7 @@
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>883 729 799 448 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>194 141 1439 1122 0 0 2560 1417 </string>
+	<string>357 62 1817 1317 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>343 181 1145 942 0 0 2560 1417 </string>
 	<key>NeverWarnAboutMeta</key>
@@ -1782,7 +1782,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>0BA44DC4-7365-4FF2-9815-D343F8EBB213</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>40</integer>
+	<integer>43</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2657,7 +2657,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-03-21T17:00:50Z</date>
+	<date>2020-03-22T17:15:59Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SoundForEsc</key>
@@ -2665,9 +2665,9 @@
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>TmuxUsesDedicatedProfile</key>
-	<false/>
+	<true/>
 	<key>UseTmuxStatusBar</key>
-	<false/>
+	<true/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>iTerm Version</key>
