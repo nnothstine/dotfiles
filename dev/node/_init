@@ -5,6 +5,8 @@ source env.zsh
 install() {
   __ensure_repo nodenv/nodenv $NODENV_ROOT
   __ensure_repo nodenv/node-build $NODENV_ROOT/plugins/node-build
+  local node_version=$(nodenv install --list | grep -v "^[^0-9]" | grep -v -e "-" -e "dev" -e "next" -e "rc" | tail -1)
+  nodenv install $node_version && nodenv global $node_version
 }
 
 update() {
@@ -18,6 +20,8 @@ update() {
 
 # link() {}
 
-# clean() {}
+clean() {
+  rm -rf $NODENV_ROOT
+}
 
 init "$@"
