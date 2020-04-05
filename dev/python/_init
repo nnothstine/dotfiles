@@ -6,8 +6,13 @@ install() {
     case $(__os) in
     macos) brew install pyenv pipenv ;;
     esac
-    pyenv install $(pyenv install --list | grep '[[:blank:]]3' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1)
-    pyenv install $(pyenv install --list | grep '[[:blank:]]2' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1)
+    local py3v="$(pyenv install --list | grep '[[:blank:]]3' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1 | sed 's/ //g')"
+    local py2v="$(pyenv install --list | grep '[[:blank:]]2' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1 | sed 's/ //g')"
+    pyenv install $py3v
+    pyenv install $py2v
+    pyenv global $py3v $py2v
+    pip3 install -r ./requirements.txt
+    pip2 install -r ./requirements.txt
 }
 
 update() {
@@ -20,6 +25,9 @@ link() {
 
 clean() {
     rm -rfv $PYENV_ROOT
+    case $(__os) in
+      macos*) brew uninstall pyenv pipenv ;;
+    esac
 }
 
 init "$@"

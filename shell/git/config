@@ -13,7 +13,7 @@
 [push]
 	default = current
 [merge]
-    ff = onlt
+  ff = only
 	log = true
 [alias]
 	amend = commit --amend

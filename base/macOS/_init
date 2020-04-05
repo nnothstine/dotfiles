@@ -5,11 +5,12 @@ source "${0:A:h}/../../deploy"
 install() {
     if ! __nan_has brew; then
         # TODO: What happens to this when /usr/bin/ruby goes away?
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     fi
+    touch ~/.hushlogin
     brew install wget
     cp -a /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SFMono-* /Library/Fonts
-    mkdir ~/Projects ~/Sandbox
+    mkdir ~/{Projects,Sandbox}
 }
 
 update() {
@@ -21,7 +22,9 @@ update() {
 }
 
 link() {
-    __nan_link .hushlogin ~/.hushlogin
+    #__nan_link .hushlogin ~/.hushlogin
 }
+
+clean() { rm -fv ~/.hushlogin }
 
 init "$@"

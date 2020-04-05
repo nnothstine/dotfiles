@@ -1,8 +1,28 @@
+# ==========================================================================
+# vi-mode
+# ==========================================================================
+
 bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins ' ' magic-space
+
 # Open current prompt in external editor
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^ ' edit-command-line
+
+
+# --------------------------------------------------------------------------
+# Surround
+# --------------------------------------------------------------------------
+
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+bindkey -a cs change-surround
+bindkey -a ds delete-surround
+bindkey -a ys add-surround
 
 # bindkey -M viins '^n' history-substring-search-down # ctrl-n
 # bindkey -M viins '^p' history-substring-search-up

@@ -31,9 +31,11 @@ alias cdd="cd $DOTFILES"
 alias dp="$DOTFILES/deploy"
 
 alias e="$EDITOR"
+alias eal="e $DOTFILES/shell/zsh/aliases.zsh"
 
 alias sshkeygen="ssh-keygen -t rsa -b 4096 -C"
 
+# sudo ops
 alias mine='sudo chown -R "$USER"'
 alias root='sudo -s'
 alias se='sudo -e'
@@ -48,3 +50,7 @@ alias tks='tmux kill-server'
 
 alias ydl-aac='youtube-dl --extract-audio --audio-format aac'
 alias ydl-m4a='youtube-dl --extract-audio --audio-format m4a'
+
+zman() {
+  PAGER="less -g -s '+/^       "$1"'" man zshall;
+}

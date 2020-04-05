@@ -1,13 +1,7 @@
 # g = git status
 # g ... = git $@
 g() { [[ $# = 0 ]] && git status --short . || git $*; }
-compdef g=hub
-
-if __nan_has hub; then
-  alias git='hub'
-else
-  alias git='git'
-fi
+compdef g=git
 
 alias gi='git init'
 alias gf='git fetch'

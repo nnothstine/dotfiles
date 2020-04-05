@@ -11,7 +11,9 @@ topic-enabled-p() { [[ -L "$(__topic_path $1)" ]] }
 __topic_path() { echo "$DOTFILES_DATA/${1/\//$SEP}.topic" }
 
 __topics() {
-  local topics; topics=( "$DOTFILES_DATA"/*.topic(N) )
+  # nullglobbing
+  local topics=( "$DOTFILES_DATA"/*.topic(N) )
+  # e.g. dev.python.topic -> dev/python
   echo ${${${topics[@]#$DOTFILES_DATA/}%.topic}/$SEP//}
 }
 
@@ -86,7 +88,7 @@ __topic_remove() {
 # ============================================================================
 
 if [[ $ZSH_EVAL_CONTEXT != *:file ]]; then
-    while getopts cdhLt opt; do
+    while getopts cdhLrt opt; do
         case $opt in
             c) CLEAN=1 ;;
             d) REMOVE=1 ;;
@@ -96,10 +98,13 @@ Usage: ${0:A:t} [-cdLt] [TOPIC...]
        Can be used alone to clean \$HOME.
   -d   Disable and unlink topic(s)
   -L   List enabled topics
+  -r   Disable, unlink, re-enable, relink
   -t   Do a test run; do not actually do anything
 EOL
           exit ;;
             L) LIST=1 ;;
+            r) READD=1 ;;
+            t) DRYRUN=1 ;;
             *) >&2 __nan_err "Aborted."
                 exit 1 ;;
         esac
@@ -112,6 +117,8 @@ EOL
         pushd -qL "$DOTFILES"
         if [[ -n $REMOVE ]]; then
             __topic_remove ${TARGETS:-$@}
+        elif [[ -n $READD ]]; then
+            __topic_remove ${TARGETS:-$@} && __topic_init ${TARGETS:-$@}
         else
             __topic_init ${TARGETS:-$@}
         fi

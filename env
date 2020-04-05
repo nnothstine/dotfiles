@@ -1,9 +1,17 @@
 #!/usr/bin/env zsh
 
-export XDG_CACHE_HOME="${HOME}/.cache"
-export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_DATA_HOME="${HOME}/.local/share"
-export XDG_BIN_HOME="${HOME}/.local/bin"
+case $OSTYPE in
+  darwin*)
+    export XDG_CACHE_HOME="${HOME}/Library/Caches"
+    export XDG_CONFIG_HOME="${HOME}/Library/Preferences"
+    export XDG_DATA_HOME="${HOME}/Library"
+    export XDG_BIN_HOME="${HOME}/Library/Binaries" ;;
+  linux*)
+    export XDG_CACHE_HOME="${HOME}/.cache"
+    export XDG_CONFIG_HOME="${HOME}/.config"
+    export XDG_DATA_HOME="${HOME}/.local/share"
+    export XDG_BIN_HOME="${HOME}/.local/bin" ;;
+esac
 
 export DOTFILES="${HOME}/.dotfiles"
 export DOTFILES_DATA="$XDG_DATA_HOME/dotfiles"
@@ -148,6 +156,8 @@ __os() {
             fi ;;
   esac
 }
+# TODO: Is there a better way of doing this?
+export DOTFILES_OS="$(__os)"
 
 __os_vers() {
   case $OSTYPE in

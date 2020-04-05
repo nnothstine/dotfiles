@@ -105,4 +105,7 @@
   "files.associations": {
     "vimrc": "viml"
   },
+  "bashIde.globPattern": "**/*@(.sh|.inc|.zsh|.bash|.command)",
+  "bashIde.highlightParsingErrors": false,
+  "python.jediEnabled": false,
 }

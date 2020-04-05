@@ -32,5 +32,8 @@ __nan_ok "Successfully cloned dotfiles."
 
 read "REPLY?Do you want to deploy the default configuration? [y/n] "
 [[ ! $REPLY =~ ^[yY]$ ]] && return 1 || {
-    $DOTFILES/deploy base/macos shell/{git,tmux,zsh} editor/neovim
+    $DOTFILES/deploy base/macos shell/{curl,git,rg,tmux,zsh} editor/neovim dev/{node,python}
+    __nan_ok "Done."
+    cp -r /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/* /Library/Fonts/
+    __nan_ok "Bootstrapped SF Mono fonts."
 }

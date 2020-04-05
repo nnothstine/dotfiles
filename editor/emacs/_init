@@ -5,7 +5,7 @@ install() {
   case $(__os) in
   macos)
     brew tap d12frosted/emacs-plus
-    brew install emacs-plus --without-spacemacs-icon --with-modern-icon
+    brew install emacs-plus
     ln -s /usr/local/Cellar/emacs-plus/*/Emacs.app/ /Applications/
     ;;
   arch) yay --needed --noconfirm -S make emacs ;;

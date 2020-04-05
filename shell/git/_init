@@ -4,7 +4,7 @@ GIT_DIR="$XDG_CONFIG_HOME/git"
 
 install() {
     case $(__os) in
-        macos) brew install git hub
+        macos) brew install git
     esac
 }
 

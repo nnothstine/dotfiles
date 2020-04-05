@@ -19,6 +19,8 @@ alias brcu='brc uninstall'
 alias brcr='brc reinstall'
 alias bru='brew update && brew upgrade && brew cleanup'
 
+alias log='/usr/bin/log'
+
 # TODO: Don't always assume a username of nnothstine
 alias reallylogout='sudo launchctl bootout gui/$(id -u nnothstine)'
 

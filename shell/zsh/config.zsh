@@ -41,6 +41,8 @@ setopt HIST_SAVE_NO_DUPS      # Do not write a duplicate event to the history fi
 setopt HIST_VERIFY            # Do not execute immediately upon history expansion.
 setopt HIST_BEEP              # Beep when accessing non-existent history.
 
+setopt PROMPT_SUBST           # Allow functions in prompts, basically.
+
 ## Directories
 DIRSTACKSIZE=9
 setopt AUTO_CD           # Auto changes to a directory without typing cd.

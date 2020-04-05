@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+
+install() {
+    case $(__os) in
+    macos*) __nan_has ffmpeg || {
+        brew tap homebrew-ffmpeg/homebrew-ffmpeg
+        brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac
+    }
+    esac
+}
+
+link() { }
+
+clean() {
+    brew uninstall ffmpeg
+    brew untap homebrew-ffmpeg/homebrew-ffmpeg
+}

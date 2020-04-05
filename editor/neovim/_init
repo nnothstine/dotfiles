@@ -6,10 +6,14 @@ install() {
     case $(__os) in
     macos) __nan_has nvim || brew install neovim ;;
     esac
-
-    # curl -fLo $XDG_DATA_HOME/site/autoload/plug.vim --create-dirs \
-    #     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    
+    if [[ ! topic-enabled-p "dev/node" ]]; then
+      __nan_warn "Node not present on system."
+    fi
+    if [[ ! topic-enabled-p "dev/python" ]]; then
+      __nan_warn "Python not enabled on system."
+    fi
+    curl -fLo "$XDG_DATA_HOME/site/autoload/plug.vim" --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     __nan_ok "Installed plug.vim."
     __ensure_repo nnothstine/nvim $XDG_CONFIG_HOME/nvim
