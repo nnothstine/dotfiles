@@ -12,7 +12,6 @@ export ZSH_CACHE="$XDG_CACHE_HOME/zsh"
 
 typeset -gU cdpath fpath mailpath path
 
-
 path=( $XDG_BIN_HOME $DOTFILES/bin $DOTFILES_DATA/*.topic/bin(N) /usr/sbin /usr/bin /sbin /bin )
 fpath=( $ZDOTDIR/functions $XDG_BIN_HOME $fpath )
 

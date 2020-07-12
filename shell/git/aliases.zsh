@@ -1,8 +1,6 @@
 # g = git status
 # g ... = git $@
 g() { [[ $# = 0 ]] && git status --short . || git $*; }
-compdef g=git
-
 alias gi='git init'
 alias gf='git fetch'
 alias gs='git status'
