@@ -3,7 +3,6 @@
   "editor.acceptSuggestionOnEnter": "on",
   "editor.cursorStyle": "block",
   "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
   "editor.renderWhitespace": "boundary",
   "editor.smoothScrolling": true,

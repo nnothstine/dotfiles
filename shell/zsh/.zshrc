@@ -36,3 +36,5 @@ else
 fi
 
 __nan_load_all aliases.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
