@@ -1,0 +1,134 @@
+directory: /Users/nnothstine/Music/Music/Media
+library: /Users/nnothstine/Music/Music/library.db
+
+import:
+  write: yes
+  copy: no
+  move: yes
+  resume: ask
+  autotag: yes
+  timid: no
+  resume: ask
+  incremental: no
+  none_rec_action: ask
+  log: /Volumes/Files/beets/beets.log
+
+# on multi-disk releases, 
+assign track numbers for the whole album.
+# If "per disk", 
+make sure tracknames do not collide ("paths" setting).
+per_disc_numbering: no
+
+convert:
+  dest: /Users/nnothstine/Music/Music/Media
+  format: m4a
+  # no_convert: path::\.(m4a|wma)$
+  # auto: yes
+  threads: 8
+  formats:
+    m4a:
+      extension: m4a
+      command: ffmpeg -i $source -c:a libfdk_aac -b:a 128k -c:v copy $dest
+
+fetchart:
+  auto: yes
+  cover_names: cover front album art
+  minwidth: 500
+  enforce_ratio: yes
+  sources: coverart albumart amazon filesystem
+
+embedart:
+  auto: yes
+  compare_threshold: 50
+  ifempty: yes
+
+ftintitle:
+  auto: yes
+  format: (feat. {0})
+
+missing:
+  format: $albumartist - $album - $title
+  count: yes
+  total: no
+
+zero:
+  fields: comments
+
+paths:
+  default: $albumartist/$album%aunique{}/$disc-$track - $title
+  singleton: Singletons/$artist - $title
+  comp: Compilations/$album%aunique{}/$disc-$track $title
+  albumtype:soundtrack: Soundtracks/$album/$disc-$track $title
+
+# files matching these patterns are deleted from source after import
+clutter: ["Thumbs.DB", ".DS_Store", "*.m3u", ".pls", "*.jpg"]
+
+# files/directories matching one of these patterns are ignored during import
+ignore: [".*", "*~", "System Volume Information"]
+
+replace:
+  '[\\/]': _
+  '^\.': _
+  '[\x00-\x1f]': _
+  '[<>:"\?\*\|]': _
+  '\.$': _
+  '\s+$': ''
+  'remix': 'Remix'
+
+match:
+  strong_rec_thresh: 0.1      # match 90% or better for auto import
+  medium_rec_thresh: 0.25
+  rec_gap_thresh: 0.25
+  max_rec:
+    missing_tracks: medium
+    unmatched_tracks: medium
+  distance_weights:
+    source: 2.0
+    artist: 3.0
+    album: 3.0
+    media: 1.0
+    mediums: 1.0
+    year: 1.0
+    country: 0.5
+    label: 0.5
+    catalognum: 0.5
+    albumdisambig: 0.5
+    album_id: 5.0
+    tracks: 2.0
+    missing_tracks: 0.9
+    unmatched_tracks: 0.6
+    track_title: 3.0
+    track_artist: 2.0
+    track_index: 1.0
+    track_length: 2.0
+    track_id: 5.0
+  preferred:
+    countries: []
+    media: []
+    original_year: no
+  ignored: []
+  track_length_grace: 10
+  track_length_max: 30
+
+plugins: [
+  bandcamp, 
+  chroma, 
+  convert, 
+  edit, 
+  embedart, 
+  fetchart, 
+  ftintitle, 
+  hook
+  importadded, 
+  lastgenre, 
+  lyrics, 
+  scrub, 
+  smartplaylist, 
+  ydl, 
+  zero, 
+]
+
+# hook:
+#   hooks:
+#     - event: after_write
+#       command: osascript /Users/nnothstine/Projects/MusicRefresh.scpt "{item.path}"

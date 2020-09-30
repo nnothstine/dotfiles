@@ -90,7 +90,6 @@
   "vim.sneak": true,
   "vsicons.dontShowNewVersionMessage": true,
   "window.newWindowDimensions": "maximized",
-  "workbench.colorTheme": "One Dark Pro",
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "vscode-icons",
   "workbench.settings.enableNaturalLanguageSearch": false,
@@ -108,4 +107,6 @@
   "bashIde.highlightParsingErrors": false,
   "python.jediEnabled": false,
   "vim.useSystemClipboard": true,
+  "editor.formatOnSave": true,
+  "python.languageServer": "Microsoft",
 }

@@ -1,0 +1,1 @@
+# alias vmrun="/Applications/VMWare\ Fusion.app/Contents/Library/vmrun"

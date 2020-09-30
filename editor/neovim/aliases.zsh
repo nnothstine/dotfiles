@@ -1,6 +1,6 @@
-alias vim=nvim
+# alias vim=nvim
 alias v=vim
 
-alias evp="nvim $VDOTDIR/plugins.vim"
-alias evm="nvim $VDOTDIR/plugin/mappings.vim"
-alias evr="nvim $VDOTDIR/init.vim"
+alias evp="cd $VDOTDIR && nvim plugins.vim"
+alias evm="cd $VDOTDIR && nvim mappings.vim"
+alias evr="cd $VDOTDIR && nvim init.vim"
