@@ -3,20 +3,20 @@ library: /Users/nnothstine/Music/Music/library.db
 
 import:
   write: yes
-  copy: no
-  move: yes
+  copy: yes
+  move: no
   resume: ask
   autotag: yes
   timid: no
   resume: ask
   incremental: no
   none_rec_action: ask
-  log: /Volumes/Files/beets/beets.log
+  log: /Users/nnothstine/beets/beets.log
 
 # on multi-disk releases, 
-assign track numbers for the whole album.
+#assign track numbers for the whole album.
 # If "per disk", 
-make sure tracknames do not collide ("paths" setting).
+#make sure tracknames do not collide ("paths" setting).
 per_disc_numbering: no
 
 convert:
@@ -128,7 +128,7 @@ plugins: [
   zero, 
 ]
 
-# hook:
-#   hooks:
-#     - event: after_write
-#       command: osascript /Users/nnothstine/Projects/MusicRefresh.scpt "{item.path}"
+hook:
+  hooks:
+    - event: after_write
+      command: osascript /Users/nnothstine/Projects/MusicRefresh.scpt "{item.path}"

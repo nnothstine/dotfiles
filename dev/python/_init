@@ -11,6 +11,7 @@ install() {
     pyenv install $py3v
     pyenv install $py2v
     pyenv global $py3v $py2v
+
     pip3 install -r ./requirements.txt
 }
 
