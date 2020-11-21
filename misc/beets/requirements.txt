@@ -1,0 +1,6 @@
+beets
+beets-bandcamp
+beets-ydl
+requests
+pylast
+pyacoustid

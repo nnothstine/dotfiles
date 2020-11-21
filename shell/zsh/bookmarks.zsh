@@ -15,7 +15,10 @@ is-at-least 4.3.12 && () {
     # Add some static entries
     # hash -d log=/var/log
     # hash -d doc=/usr/share/doc
-    hash -d -- -las="/Library/Application Support"
+    hash -d -- -las=/Library/Application\ Support
+    hash -d -- -co=~/.config
+    hash -d -- -do=~/.dotfiles
+    hash -d -- -xd=~/.local/share
 
     # Populate the hash
     for link ($MARKPATH/*(N@)) {

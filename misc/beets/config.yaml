@@ -1,5 +1,6 @@
-directory: /Users/nnothstine/Music/Music/Media
-library: /Users/nnothstine/Music/Music/library.db
+directory: /Volumes/musicdisk/Music
+library: /Volumes/musicdisk/Music/library.db
+# pluginpath: /Users/nnothstine/.local/share/pyenv/versions/3.9.0/lib/python3.9/site-packages/beetsplug
 
 import:
   write: yes
@@ -11,7 +12,7 @@ import:
   resume: ask
   incremental: no
   none_rec_action: ask
-  log: /Users/nnothstine/beets/beets.log
+  log: ~/beets/beets.log
 
 # on multi-disk releases, 
 #assign track numbers for the whole album.
@@ -20,7 +21,7 @@ import:
 per_disc_numbering: no
 
 convert:
-  dest: /Users/nnothstine/Music/Music/Media
+  dest: ~/Music/Music/Media
   format: m4a
   # no_convert: path::\.(m4a|wma)$
   # auto: yes
@@ -28,7 +29,7 @@ convert:
   formats:
     m4a:
       extension: m4a
-      command: ffmpeg -i $source -c:a libfdk_aac -b:a 128k -c:v copy $dest
+      command: ffmpeg -i $source -c:a libfdk_aac -b:a 256k -c:v copy $dest
 
 fetchart:
   auto: yes
@@ -119,7 +120,6 @@ plugins: [
   fetchart, 
   ftintitle, 
   hook
-  importadded, 
   lastgenre, 
   lyrics, 
   scrub, 
@@ -128,7 +128,7 @@ plugins: [
   zero, 
 ]
 
-hook:
-  hooks:
-    - event: after_write
-      command: osascript /Users/nnothstine/Projects/MusicRefresh.scpt "{item.path}"
+# hook:
+#   hooks:
+#     - event: after_write
+#       command: osascript /Users/nnothstine/Projects/MusicRefresh.scpt "{item.path}"

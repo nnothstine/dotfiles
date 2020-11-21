@@ -4,15 +4,20 @@ source env.zsh
 
 install() {
     case $(__os) in
-    macos) brew install pyenv pipenv ;;
+      macos) brew install pyenv pipenv pyenv-virtualenv ;;
     esac
     local py3v="$(pyenv install --list | grep '[[:blank:]]3' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1 | sed 's/ //g')"
-    local py2v="$(pyenv install --list | grep '[[:blank:]]2' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1 | sed 's/ //g')"
+    # local py2v="$(pyenv install --list | grep '[[:blank:]]2' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1 | sed 's/ //g')"
     pyenv install $py3v
-    pyenv install $py2v
-    pyenv global $py3v $py2v
-
-    pip3 install -r ./requirements.txt
+    # pyenv install $py2v
+    # pyenv global $py3v $py2v
+    pyenv global $py3v
+    pyenv virtualenv $py3v neovim3 \
+      && pyenv activate neovim3 \
+      && python -m pip install --upgrade pip \
+      && python -m pip install pynvim \
+      && pyenv deactivate
+    pip install --upgrade -r ./requirements.txt
 }
 
 update() {
@@ -26,7 +31,7 @@ link() {
 clean() {
     rm -rfv $PYENV_ROOT
     case $(__os) in
-      macos*) brew uninstall pyenv pipenv ;;
+      macos*) brew uninstall pyenv pipenv pyenv-virtualenv ;;
     esac
 }
 

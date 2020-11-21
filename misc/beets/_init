@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+source ${0:A:h}/../../deploy
+# source env.zsh
+
+install() { 
+  # case $(__os) in
+  #   macos) brew install beets ;;
+  # esac
+
+  if __nan_has "pip" && __nan_has "pyenv"; then
+    # Don't install from public ports; plugins are broken
+    pip install https://github.com/beetbox/beets/tarball/master
+    pip install -r ./requirements.txt 
+  else
+    __nan_err "Bootstrap python before doing this."
+  fi
+}
+
+link() {
+  __nan_link config.yaml $XDG_CONFIG_HOME/beets/config.yaml
+}
+
+clean() {
+  rm -rfv $XDG_CONFIG_HOME/beets
+  pip3 uninstall -r ./requirements.txt
+  # case $(__os) in
+  #   macos) brew uninstall beets ;;
+  # esac
+}
+
+init "$@"
