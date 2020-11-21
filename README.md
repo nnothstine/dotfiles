@@ -1,1 +1,1 @@
-# nnothstine's dotfiles## Execution on new clientshttps://git.io/JfcQI
+# nnothstine's dotfiles

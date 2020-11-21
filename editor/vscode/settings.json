@@ -109,4 +109,7 @@
   "vim.useSystemClipboard": true,
   "editor.formatOnSave": true,
   "python.languageServer": "Microsoft",
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "$XDG_CONFIG_HOME/nvim/vscodeinit.vim",
+  "vscode-neovim.mouseSelectionStartVisualMode": true,
 }

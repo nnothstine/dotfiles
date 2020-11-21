@@ -34,6 +34,7 @@ if [[ -z $SSH_CONNECTION ]]; then
 
   zinit for lucid wait atload'!_zsh_autosuggest_start' \
     'zsh-users/zsh-autosuggestions'
+  export ZSH_AUTOSUGGEST_USE_ASYNC=1
 
   # zinit for pick"async.zsh" atload"prompt_pure_setup" src"pure.zsh" \
   #   load 'sindresorhus/pure'

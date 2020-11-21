@@ -4,7 +4,7 @@ NVIM_INSTALL_DIR="$XDG_CONFIG_HOME/nvim"
 
 install() {
     case $(__os) in
-    macos) __nan_has nvim || brew install neovim ;;
+      macos) __nan_has nvim || brew install neovim ;;
     esac
     
     # if [[ ! topic-enabled-p dev/node ]]; then

@@ -23,6 +23,7 @@ source "$DOTFILES/shell/zsh/config.zsh"
 source "$DOTFILES/shell/zsh/keybindings.zsh"
 source "$DOTFILES/shell/zsh/completion.zsh"
 source "$DOTFILES/shell/zsh/functions.zsh"
+source "$DOTFILES/shell/zsh/bookmarks.zsh"
 
 autoload -Uz compinit
 autoload -Uz _zinit
@@ -36,4 +37,3 @@ else
 fi
 
 __nan_load_all aliases.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

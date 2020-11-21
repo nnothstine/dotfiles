@@ -71,3 +71,9 @@ export MANPAGER="$PAGER"
 # ==========================================================================
 
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --ignore-file \"${DOTFILES}/shell/ag/dot.ignore\""
+
+# ==========================================================================
+# CD_PATH
+# ==========================================================================
+
+# cdpath=($HOME/Projects $DOTFILES)
