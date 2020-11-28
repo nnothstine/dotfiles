@@ -8,6 +8,9 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZINITDIR="$ZDOTDIR/zinit"
 export ZSH_CACHE="$XDG_CACHE_HOME/zsh"
 
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+
 # export FZF_DEFAULT_COMMAND="rg --glob --files --ignore-file \"${DOTFILES}/shell/ag/dot.ignore\""
 
 typeset -gU cdpath fpath mailpath path

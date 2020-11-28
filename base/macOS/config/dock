@@ -61,22 +61,17 @@ __clear_dock
 
 __add_app_to_dock "Finder"
 __add_app_to_dock "Launchpad"
-__add_app_to_dock "System Preferences"
-__add_spacer_to_dock
-__add_app_to_dock "Activity Monitor"
-__add_app_to_dock "Console"
-__add_app_to_dock "Terminal"
-__add_app_to_dock "Wireshark"
-__add_spacer_to_dock
 __add_app_to_dock "Safari"
-__add_app_to_dock "Mail"
-__add_app_to_dock "Calendar"
-__add_app_to_dock "Things3"
+# __add_app_to_dock "Mail"
 __add_app_to_dock "Messages"
+__add_app_to_dock "Mail"
+__add_app_to_dock "Photos"
+__add_app_to_dock "Reminders"
+__add_app_to_dock "Notes"
 __add_app_to_dock "Music"
-__add_app_to_dock "Books"
 __add_app_to_dock "App Store"
-__add_spacer_to_dock
 __add_app_to_dock "Shadow"
+__add_app_to_dock "Steam"
+__add_app_to_dock "System Preferences"
 
 killall Dock

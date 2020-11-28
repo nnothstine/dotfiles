@@ -8,6 +8,12 @@ install() {
     esac
     local py3v="$(pyenv install --list | grep '[[:blank:]]3' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1 | sed 's/ //g')"
     # local py2v="$(pyenv install --list | grep '[[:blank:]]2' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1 | sed 's/ //g')"
+    export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+    export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+    export LDFLAGS="${LDFLAGS} -L/usr/local/opt/sqlite/lib"
+    export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/sqlite/include"
+    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
+    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/sqlite/lib/pkgconfig"
     pyenv install $py3v
     # pyenv install $py2v
     # pyenv global $py3v $py2v

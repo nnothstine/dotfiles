@@ -2,7 +2,8 @@
   "auto-close-tag.SublimeText3Mode": true,
   "editor.acceptSuggestionOnEnter": "on",
   "editor.cursorStyle": "block",
-  "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.tabCompletion": "off",
+  "editor.fontFamily": "SF Mono, Fira Code, Menlo, Monaco, 'Courier New', monospace",
   "editor.lineNumbers": "relative",
   "editor.renderWhitespace": "boundary",
   "editor.smoothScrolling": true,
@@ -77,17 +78,6 @@
       ]
     }
   ],
-  // "vim.normalModeKeyBindingsNonRecursive": [
-  //   {
-  //     "before": [
-  //       ":"
-  //     ],
-  //     "commands": [
-  //       "workbench.action.showCommands",
-  //     ]
-  //   }
-  // ],
-  "vim.sneak": true,
   "vsicons.dontShowNewVersionMessage": true,
   "window.newWindowDimensions": "maximized",
   "workbench.enableExperiments": false,
@@ -110,6 +100,12 @@
   "editor.formatOnSave": true,
   "python.languageServer": "Microsoft",
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "$XDG_CONFIG_HOME/nvim/vscodeinit.vim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "$XDG_CONFIG_HOME/nvim/vscode.init.vim",
   "vscode-neovim.mouseSelectionStartVisualMode": true,
+  "vim.gdefault": true,
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.mouseSelectionGoesIntoVisualMode": false,
+  "vim.enableNeovim": true,
+  "vim.useCtrlKeys": false,
+  "python.showStartPage": false,
 }
