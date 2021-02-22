@@ -1,6 +1,6 @@
 [user]
 	name = Niklas Nothstine
-	email = nikn@apple.com
+	email = niklas@nothstine.io
 [core]
 	pager = less
 	whitespace = trailing-space
@@ -26,19 +26,23 @@
   branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
   ci = commit -v
   co = checkout
-	amend = commit --amend
-	exec = "!exec "
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-	ls = ls-files
-	orphan = checkout --orphan
-	unadd = reset HEAD
-	undo-commit = reset --soft "HEAD^"
-	# data analysis
-	ranked-authors = !git authors | sort | uniq -c | sort -n
-	emails = !git log --format="%aE" | sort -u
-	email-domains = !git log --format="%aE" | awk -F'@' '{print $2}' | sort -u
+  amend = commit --amend
+  exec = "!exec "
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  ls = ls-files
+  orphan = checkout --orphan
+  unadd = reset HEAD
+  undo-commit = reset --soft "HEAD^"
+  # data analysis
+  ranked-authors = !git authors | sort | uniq -c | sort -n
+  emails = !git log --format="%aE" | sort -u
+  email-domains = !git log --format="%aE" | awk -F'@' '{print $2}' | sort -u
+  workprofile = !git config user.email "nikn@apple.com"
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[pull]
+	ff = only
+	# ff = only

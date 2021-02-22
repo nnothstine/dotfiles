@@ -3,7 +3,7 @@ source ${0:A:h}/../../deploy
 
 install() {
     case $(__os) in
-        macos) __nan_has code || brew cask install visual-studio-code
+        macos) __nan_has code || brew install --cask visual-studio-code
     esac
     ./install-extensions.sh
 }

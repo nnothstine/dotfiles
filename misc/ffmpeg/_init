@@ -3,9 +3,9 @@ source ${0:A:h}/../../deploy
 
 install() {
     case $(__os) in
-    macos*) __nan_has ffmpeg || {
+    macos) __nan_has ffmpeg || {
         brew tap homebrew-ffmpeg/homebrew-ffmpeg
-        brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac
+        brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac --with-chromaprint
     }
     esac
 }

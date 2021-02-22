@@ -3,9 +3,7 @@ source ${0:A:h}/../../deploy
 
 install() {
     case $(__os) in
-    macos)
-        brew cask install iterm2
-        ;;
+    macos) brew install --cask iterm2 ;;
     esac
 }
 
@@ -20,7 +18,7 @@ link() {
 clean() {
     rm -rfv ~/.emacs.d
     case $(__os) in
-    macos) brew untap d12frosted/emacs-plus ;;
+    macos) brew uninstall --cask iterm2 ;;
     esac
 }
 

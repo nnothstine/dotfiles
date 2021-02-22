@@ -3,10 +3,14 @@ source ${0:A:h}/../../deploy
 source env.zsh
 
 install() {
+  case $(__os) in
+    macos) brew install nodenv ;;
+  esac
   __ensure_repo nodenv/nodenv $NODENV_ROOT
   __ensure_repo nodenv/node-build $NODENV_ROOT/plugins/node-build
-  local node_version=$(nodenv install --list | grep -v "^[^0-9]" | grep -v -e "-" -e "dev" -e "next" -e "rc" | tail -1)
-  nodenv install $node_version && nodenv global $node_version
+  __ensure_repo momo-lab/xxenv-latest "$NODENV_ROOT/plugins/xxenv-latest"
+  nodenv latest install
+  nodenv latest global
 }
 
 update() {
@@ -21,6 +25,9 @@ update() {
 # link() {}
 
 clean() {
+  case $(__os) in
+    macos) brew uninstall nodenv ;;
+  esac
   rm -rf $NODENV_ROOT
 }
 

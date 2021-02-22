@@ -8,8 +8,18 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZINITDIR="$ZDOTDIR/zinit"
 export ZSH_CACHE="$XDG_CACHE_HOME/zsh"
 
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
+[[ ! -d "/AppleInternal" ]] && export DOTFILES_ENV="home" || export DOTFILES_ENV="work" 
+
+[[ $DOTFILES_ENV == "work" ]] && {
+  export LDFLAGS="-L/opt/brew/opt/zlib/lib -L/opt/brew/opt/openssl@1.1/lib"
+  export CPPFLAGS="-I/opt/brew/opt/zlib/include -I/opt/brew/opt/openssl@1.1/include"
+  export PKG_CONFIG_PATH="/opt/brew/opt/openssl@1.1/lib/pkgconfig"
+} || {
+  # TODO: fix for home
+  export LDFLAGS="-L/usr/local/opt/zlib/lib -L/opt/brew/opt/openssl@1.1/lib"
+  export CPPFLAGS="-I/opt/brew/opt/zlib/include -I/opt/brew/opt/openssl@1.1/include"
+  export PKG_CONFIG_PATH="/opt/brew/opt/openssl@1.1/lib/pkgconfig"
+}
 
 # export FZF_DEFAULT_COMMAND="rg --glob --files --ignore-file \"${DOTFILES}/shell/ag/dot.ignore\""
 

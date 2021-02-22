@@ -1708,7 +1708,7 @@
 			<key>Window Type</key>
 			<integer>0</integer>
 			<key>Working Directory</key>
-			<string>/Users/nnothstine</string>
+			<string>/Users/nan</string>
 		</dict>
 	</array>
 	<key>NoSyncAllAppVersions</key>
@@ -2484,7 +2484,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/nnothstine/.dotfiles/misc/iterm2</string>
+	<string>/Users/nan/.dotfiles/misc/iterm2</string>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>SUAutomaticallyUpdate</key>

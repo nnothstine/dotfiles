@@ -20,7 +20,7 @@ fi
 
 if [[ ! -d ~/.dotfiles ]]; then
     __nan_status "Deploying dotfiles repository..."
-    if [[ $USER == nnothstine ]]; then
+    if [[ $USER == "nan" ]]; then
         dfrepo=git@github.com:nnothstine/dotfiles.git
     else
         dfrepo=https://github.com/nnothstine/dotfiles

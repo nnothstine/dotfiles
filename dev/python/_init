@@ -6,24 +6,10 @@ install() {
     case $(__os) in
       macos) brew install pyenv pipenv pyenv-virtualenv ;;
     esac
-    local py3v="$(pyenv install --list | grep '[[:blank:]]3' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1 | sed 's/ //g')"
-    # local py2v="$(pyenv install --list | grep '[[:blank:]]2' | grep -v -e "-" -e "a" -e "b" -e "rc" | tail -1 | sed 's/ //g')"
-    export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
-    export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
-    export LDFLAGS="${LDFLAGS} -L/usr/local/opt/sqlite/lib"
-    export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/sqlite/include"
-    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
-    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/sqlite/lib/pkgconfig"
-    pyenv install $py3v
-    # pyenv install $py2v
-    # pyenv global $py3v $py2v
-    pyenv global $py3v
-    pyenv virtualenv $py3v neovim3 \
-      && pyenv activate neovim3 \
-      && python -m pip install --upgrade pip \
-      && python -m pip install pynvim \
-      && pyenv deactivate
-    pip install --upgrade -r ./requirements.txt
+    __ensure_repo momo-lab/xxenv-latest "$PYENV_ROOT/plugins/xxenv-latest"
+    pyenv latest install
+    pyenv latest global
+    # pip install --upgrade -r ./requirements.txt
 }
 
 update() {

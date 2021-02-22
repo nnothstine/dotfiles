@@ -4,4 +4,4 @@ export LESS='-g -i -M -R -S -w -z-4'
 export HOMEBREW_NO_ANALYTICS=true
 export HOMEBREW_AUTO_UPDATE_SECS=86400
 
-path=( /usr/local/{s,}bin $path /sbin )
+path=( /opt/brew/bin /usr/local/{s,}bin $path /sbin )

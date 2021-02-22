@@ -12,17 +12,17 @@ alias b=brew
 alias bi='b install'
 alias bu='b uninstall'
 alias bs='b search'
+alias bz='b uninstall --zap'
 
-alias brc='brew cask'
-alias brci='brc install'
-alias brcu='brc uninstall'
-alias brcr='brc reinstall'
+alias brci='b install --cask'
+alias brcu='b uninstall --cask'
+alias brcr='b reinstall --cask'
+alias brcz='bz --cask'
 alias bru='brew update && brew upgrade && brew cleanup'
 
 alias log='/usr/bin/log'
 
-# TODO: Don't always assume a username of nnothstine
-alias reallylogout='sudo launchctl bootout gui/$(id -u nnothstine)'
+alias reallylogout='sudo launchctl bootout gui/$(id -u $(whoami))'
 
 # alias las="$HOME/Library/Application Support"
 # alias rlas="/Library/Application Support"

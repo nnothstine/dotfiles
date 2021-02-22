@@ -103,9 +103,20 @@
   "vscode-neovim.neovimInitVimPaths.darwin": "$XDG_CONFIG_HOME/nvim/vscode.init.vim",
   "vscode-neovim.mouseSelectionStartVisualMode": true,
   "vim.gdefault": true,
-  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.neovimPath": "/opt/brew/bin/nvim",
   "vim.mouseSelectionGoesIntoVisualMode": false,
   "vim.enableNeovim": true,
   "vim.useCtrlKeys": false,
   "python.showStartPage": false,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.arrowParens": "avoid",
+  "git.autofetch": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
 }
