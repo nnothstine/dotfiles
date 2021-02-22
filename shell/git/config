@@ -37,7 +37,7 @@
   ranked-authors = !git authors | sort | uniq -c | sort -n
   emails = !git log --format="%aE" | sort -u
   email-domains = !git log --format="%aE" | awk -F'@' '{print $2}' | sort -u
-  workprofile = !git config user.email "nikn@apple.com"
+  workprofile = !git config global user.email "nikn@apple.com"
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process

@@ -13,23 +13,31 @@ __update_brew() {
 
 # }
 
+__update_zinit() {
+  zinit update 
+  zinit self-update
+}
+
 __update_all() {
   __update_brew
+  __update_zinit
 }
 
 __usage() {
   cat <<EOL
-Usage: ${0:A:t} [-abhr] [ITEM...]
+Usage: ${0:A:t} [-abhprz] [ITEM...]
   -a  Update all
   -b  Update Homebrew
   -h  Print usage
   -p  Update Python
   -r  Update Ruby
+  -z  Update zinit
 EOL
 }
 
 while getopts ":abhpr" opt; do
   case $opt in
+    a) BREW=1 PYTHON=1 ZINIT=1 __update_all ;;
     b) BREW=1 ;;
     p) PYTHON=1 ;;
     h) __usage exit ;;
@@ -37,8 +45,9 @@ while getopts ":abhpr" opt; do
       exit 1 ;;
   esac
 done
+if [ -z $opt ]; then __usage && exit; fi
 shift $((OPTIND -1))
 
-if [[ -n $BREW ]]; then
-  __update_brew
-fi
+# if [[ -n $BREW ]]; then
+#   __update_brew
+# fi

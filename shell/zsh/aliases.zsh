@@ -40,7 +40,7 @@ alias mine='sudo chown -R "$USER"'
 alias root='sudo -s'
 alias se='sudo -e'
 
-alias resrc=". ${DOTFILES}/shell/zsh/.zshrc"
+alias resrc="source ${DOTFILES}/shell/zsh/.zshrc"
 
 alias t="tree -a --noreport --dirsfirst -I '.git|node_modules|bower_components|.DS_Store'"
 

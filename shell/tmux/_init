@@ -6,7 +6,8 @@ install() {
     macos*) brew install tmux ;;
     esac
 
-    __ensure_repo tmux-plugins/tpm "${DOTFILES}/shell/tmux/plugins/tpm"
+    __ensure_repo tmux-plugins/tpm "${DOTFILES}/shell/tmux/plugins/tpm" && \
+        "$DOTFILES/shell/tmux/plugins/tpm/bin/install_plugins"
 }
 
 link() {

@@ -119,4 +119,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.tabSize": 2,
 }
