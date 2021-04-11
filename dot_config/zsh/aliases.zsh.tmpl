@@ -21,10 +21,10 @@ alias wget='wget -c' # Resume dl if possible
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
 alias grep='grep --color=auto'
 
-# alias ag="ag -p $XDG_CONFIG_HOME/ag/agignore"
+alias ag="ag -p $XDG_CONFIG_HOME/ag/agignore"
 alias rg='rg'
 
-# alias curl="curl --config '${DOTFILES}/shell/curl/curlrc'"
+alias curl="curl --config '${DOTFILES}/shell/curl/curlrc'"
 
 alias cdd="cd $XDG_DATA_HOME/chezmoi"
 alias dp="chezmoi apply"
@@ -43,7 +43,7 @@ alias resrc=". ${DOTFILES}/shell/zsh/.zshrc"
 
 alias t="tree -a --noreport --dirsfirst -I '.git|node_modules|bower_components|.DS_Store'"
 
-# alias tmux='tmux -f "${DOTFILES}/shell/tmux/tmux.conf"'
+alias tmux='tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"'
 alias ta='tmux attach'
 alias tks='tmux kill-server'
 
@@ -54,7 +54,7 @@ zman() {
   PAGER="less -g -s '+/^       "$1"'" man zshall
 }
 
-{{- if .python }}
+{{- if .languages.python }}
 alias py=python
 __nan_has python3 && alias py3=python3
 
@@ -62,7 +62,7 @@ alias pye=pyenv
 alias pir="pip install -r requirements.txt"
 {{- end }}
 
-{{- if .node }}
+{{- if .languages.node }}
 alias n='npm'
 alias ni='n install'
 alias nig='ni --global'

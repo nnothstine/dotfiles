@@ -1,0 +1,48 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "] space",
+        "command": "editor.action.insertLineAfter",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "[ space",
+        "command": "editor.action.insertLineBefore",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "tab",
+        "command": "selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "shift+tab",
+        "command": "selectPrevSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+    },
+    {
+        "key": "space v",
+        "command": "workbench.action.splitEditor",
+        "when": "vim.active && editorTextFocus && vim.mode == 'Normal'"
+    },
+    // {
+    //     "key": "ctrl+\\",
+    //     "command": "editor.action.commentLine",
+    //     "when": "editorTextFocus"
+    // },
+    {
+        "key": "alt+f",
+        "command": "workbench.action.quickOpen",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "space h",
+        "command": "workbench.action.splitEditorDown",
+        "when": "vim.active && editorTextFocus && vim.mode == 'Normal'"
+    },
+    // {
+    //     "key": "\\",
+    //     "command": "workbench.action.findInFiles",
+    //     "when": "vim.active && editorTextFocus && vim.mode == 'Normal'"
+    // }
+]

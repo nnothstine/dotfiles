@@ -1,0 +1,112 @@
+{
+  "auto-close-tag.SublimeText3Mode": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.cursorStyle": "block",
+  "editor.tabCompletion": "off",
+  "editor.fontFamily": "SF Mono, Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.lineNumbers": "relative",
+  "editor.renderWhitespace": "boundary",
+  "editor.smoothScrolling": true,
+  "editor.snippetSuggestions": "top",
+  "editor.suggestSelection": "recentlyUsed",
+  "emmet.showSuggestionsAsSnippets": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true,
+  "extensions.showRecommendationsOnlyOnDemand": true,
+  "html.format.endWithNewline": true,
+  "search.useGlobalIgnoreFiles": true,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "vim.leader": " ",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "\\"
+      ],
+      "after": [
+        "g",
+        "c",
+        "c"
+      ]
+      // "commands": [
+      //   "expandLineSelection",
+      //   "editor.action.commentLine",
+      // ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<Leader>",
+        "t",
+        "t"
+      ],
+      "commands": [
+        ":tabnew"
+      ]
+    },
+    {
+      "before": [
+        "<Leader>",
+        "t",
+        "n"
+      ],
+      "commands": [
+        ":tabnext"
+      ]
+    },
+    {
+      "before": [
+        "<Leader>",
+        "t",
+        "p"
+      ],
+      "commands": [
+        ":tabprev"
+      ]
+    },
+    {
+      "before": [
+        "<Leader>",
+        "t",
+        "o"
+      ],
+      "commands": [
+        ":tabo"
+      ]
+    }
+  ],
+  "vsicons.dontShowNewVersionMessage": true,
+  "window.newWindowDimensions": "maximized",
+  "workbench.enableExperiments": false,
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.codeLens": false,
+  "window.zoomLevel": 0,
+  "workbench.activityBar.visible": true,
+  "workbench.statusBar.visible": true,
+  "emmet.triggerExpansionOnTab": true,
+  "git.enableSmartCommit": true,
+  "files.associations": {
+    "vimrc": "viml"
+  },
+  "bashIde.globPattern": "**/*@(.sh|.inc|.zsh|.bash|.command)",
+  "bashIde.highlightParsingErrors": false,
+  "python.jediEnabled": false,
+  "vim.useSystemClipboard": true,
+  "editor.formatOnSave": true,
+  "python.languageServer": "Microsoft",
+  "vim.gdefault": true,
+  "vim.mouseSelectionGoesIntoVisualMode": false,
+  "vim.enableNeovim": true,
+  "vim.useCtrlKeys": false,
+  "python.showStartPage": false,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+}
