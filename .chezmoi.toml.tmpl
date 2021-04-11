@@ -5,12 +5,11 @@
 {{ $python := true }}
 {{ $ruby := false }}
 {{ $work := false }}
+{{ $editor := "code" }}
 
 {{- if eq .chezmoi.hostname "x86" -}}
   {{ $work = true }}
 {{- end -}}
-{{ $node = promptBool "node" }}
-{{ $ruby = promptBool "ruby" }}
 
 [data]
   headless = {{ $headless }}
@@ -20,3 +19,4 @@
   python = {{ $python }}
   ruby = {{ $ruby }}
   node = {{ $node }}
+  editor = {{ $editor | quote }}

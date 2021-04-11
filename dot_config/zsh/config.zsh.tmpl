@@ -60,6 +60,8 @@ unsetopt AUTO_NAME_DIRS # Don't add variable-stored paths to ~ list.
 unalias run-help
 autoload run-help
 
+export EDITOR={{- .editor }}
+
 export PAGER='less'
 export GIT_PAGER="$PAGER"
 

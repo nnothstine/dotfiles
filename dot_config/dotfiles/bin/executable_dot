@@ -1,0 +1,44 @@
+#!/usr/bin/env zsh
+
+__update_brew() {
+  brew update
+  brew upgrade
+}
+
+# __update_ruby() {
+
+# }
+
+# __update_python() {
+
+# }
+
+__update_all() {
+  __update_brew
+}
+
+__usage() {
+  cat <<EOL
+Usage: ${0:A:t} [-abhr] [ITEM...]
+  -a  Update all
+  -b  Update Homebrew
+  -h  Print usage
+  -p  Update Python
+  -r  Update Ruby
+EOL
+}
+
+while getopts ":abhpr" opt; do
+  case $opt in
+    b) BREW=1 ;;
+    p) PYTHON=1 ;;
+    h) __usage exit ;;
+    *) >&2 __nan_err "Aborted."
+      exit 1 ;;
+  esac
+done
+shift $((OPTIND -1))
+
+if [[ -n $BREW ]]; then
+  __update_brew
+fi
