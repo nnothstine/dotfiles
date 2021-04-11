@@ -1,0 +1,16 @@
+{{ $headless := false }}
+{{ $hostname := .chezmoi.hostname }}
+{{ $transient := false }}
+{{ $work := false }}
+
+{{ if eq .chezmoi.hostname "x86" }}
+  {{ $work = true }}
+{{ end }}
+
+{{ $python := true }}
+
+[data]
+  headless = {{ $headless }}
+  hostname = {{ $hostname | quote }}
+  transient = {{ $transient }}
+  work = {{ $work }}

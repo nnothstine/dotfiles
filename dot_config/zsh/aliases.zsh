@@ -3,7 +3,6 @@ autoload -U zmv
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-# alias --='cd -'
 
 alias ln="${aliases[ln]:-ln} -v" # verbose ln
 alias l='ls -1'
@@ -27,8 +26,8 @@ alias rg='rg'
 
 # alias curl="curl --config '${DOTFILES}/shell/curl/curlrc'"
 
-alias cdd="cd $DOTFILES"
-alias dp="$DOTFILES/deploy"
+alias cdd="cd $XDG_DATA_HOME/chezmoi"
+alias dp="chezmoi apply"
 
 alias e="$EDITOR"
 # alias eal="e $DOTFILES/shell/zsh/aliases.zsh"

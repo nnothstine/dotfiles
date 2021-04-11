@@ -15,7 +15,11 @@ export CPPFLAGS="-I/usr/local/opt/zlib/include"
 
 typeset -gU cdpath fpath mailpath path
 
+{{ if .work }}
+path=( $XDG_BIN_HOME $DOTFILES/bin /usr/local/bin /opt/brew/ /usr/sbin /usr/bin /sbin /bin )
+{{ else }}
 path=( $XDG_BIN_HOME $DOTFILES/bin /usr/local/bin /usr/sbin /usr/bin /sbin /bin )
+{{ end }}
 fpath=( $ZDOTDIR/functions $XDG_BIN_HOME $fpath )
 
 export LANG=${LANG:-en_US.UTF-8}

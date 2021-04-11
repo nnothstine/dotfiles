@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+source "$XDG_CONFIG_HOME/env"
+
+{{- if .python }}
+brew install pyenv pipenv pyenv-virtualenv
+__ensure_repo momo-lab/xxenv-latest $PYENV_ROOT/plugins/xxenv-latest
+{{- end }}
