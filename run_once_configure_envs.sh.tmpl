@@ -5,4 +5,17 @@ source "$XDG_CONFIG_HOME/env"
 {{- if .python }}
 brew install pyenv pipenv pyenv-virtualenv
 __ensure_repo momo-lab/xxenv-latest $PYENV_ROOT/plugins/xxenv-latest
+pyenv latest install && pyenv latest global
+{{- end }}
+
+{{- if .node }}
+brew install nodenv
+__ensure_repo momo-lab/xxenv-latest $NODENV_ROOT/plugins/xxenv-latest
+nodenv latest install && nodenv latest global
+{{- end }}
+
+{{- if .ruby }}
+brew install rbenv
+__ensure_repo momo-lab/xxenv-latest $RBENV_ROOT/plugins/xxenv-latest
+rbenv latest install && rbenv latest global
 {{- end }}

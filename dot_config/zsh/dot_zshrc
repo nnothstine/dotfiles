@@ -20,6 +20,7 @@ zmodload zsh/complist
 
 source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/config.zsh"
+source "$ZDOTDIR/env.zsh"
 source "$ZDOTDIR/keybindings.zsh"
 source "$ZDOTDIR/completion.zsh"
 source "$ZDOTDIR/functions.zsh"

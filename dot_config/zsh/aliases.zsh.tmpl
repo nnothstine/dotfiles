@@ -53,3 +53,18 @@ alias ydl-m4a='youtube-dl --extract-audio --audio-format m4a'
 zman() {
   PAGER="less -g -s '+/^       "$1"'" man zshall
 }
+
+{{- if .python }}
+alias py=python
+__nan_has python3 && alias py3=python3
+
+alias pye=pyenv
+alias pir="pip install -r requirements.txt"
+{{- end }}
+
+{{- if .node }}
+alias n='npm'
+alias ni='n install'
+alias nig='ni --global'
+alias nu='n uninstall'
+{{ end -}}
