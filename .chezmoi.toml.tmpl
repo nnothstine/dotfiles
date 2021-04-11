@@ -3,12 +3,19 @@
 {{ $transient := false }}
 {{ $node := true }}
 {{ $python := true }}
-{{ $ruby := false }}
+{{ $ruby := promptBool "ruby" }}
 {{ $work := false }}
 {{ $editor := "code" }}
+{{ $beets := false }}
+{{ $ffmpeg := false }}
 
 {{- if eq .chezmoi.hostname "x86" -}}
   {{ $work = true }}
+{{- end -}}
+
+{{- if not $work -}}
+  {{ $beets = promptBool "beets" }}
+  {{ $ffmpeg = promptBool "ffmpeg" }}
 {{- end -}}
 
 [data]
@@ -21,3 +28,6 @@
   python = {{ $python }}
   ruby = {{ $ruby }}
   node = {{ $node }}
+[data.misc]
+  beets = {{ $beets }}
+  ffmpeg = {{ $ffmpeg }}

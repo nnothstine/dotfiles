@@ -17,7 +17,8 @@ is-at-least 4.3.12 && () {
     # hash -d doc=/usr/share/doc
     hash -d -- -las=/Library/Application\ Support
     hash -d -- -co=~/.config
-    hash -d -- -do=~/.dotfiles
+    hash -d -- -do=~/.config/dotfiles
+    hash -d -- -cz=~/.local/share/chezmoi
     hash -d -- -xd=~/.local/share
 
     # Populate the hash
