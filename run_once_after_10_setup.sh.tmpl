@@ -2,24 +2,24 @@
 
 source "$DOTFILES/env"
 
+{{- if eq .chezmoi.os "darwin" }} 
+brew bundle install --file="$DOTFILES/darwin/Brewfile"
+{{ end -}}
+
 {{ if .languages.python }}
-brew install pyenv pipenv pyenv-virtualenv
 __ensure_repo momo-lab/xxenv-latest $PYENV_ROOT/plugins/xxenv-latest
 pyenv latest install && pyenv latest global
 {{ end -}}
 
 {{- if .languages.node }}
-brew install nodenv
 __ensure_repo momo-lab/xxenv-latest $NODENV_ROOT/plugins/xxenv-latest
 nodenv latest install && nodenv latest global
 {{ end -}}
 
 {{- if .languages.ruby }}
-brew install rbenv
 __ensure_repo momo-lab/xxenv-latest $RBENV_ROOT/plugins/xxenv-latest
 rbenv latest install && rbenv latest global
 {{ end -}}
-
 
 {{- if .misc.beets }}
 pip install beets
@@ -28,7 +28,7 @@ pip install beets
 {{- if .misc.ffmpeg }}
 brew tap homebrew-ffmpeg/homebrew-ffmpeg
 brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac --with-chromaprint
-{{ end }}
+{{ end -}}
 
 # We need this because the script freaks out if I say "no" to reinstalling the envs
 exit 0

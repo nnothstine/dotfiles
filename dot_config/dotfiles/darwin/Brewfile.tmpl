@@ -1,10 +1,21 @@
-{{- if not .work -}}
+{{ if not .work }}
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
-{{- end -}}
+{{ end -}}
 
+{{ if .languages.node }}
+brew "nodenv"
+{{ end -}}
+{{ if .languages.python }}
+brew "pyenv"
+brew "pipenv"
+brew "pyenv-virtualenv"
+{{ end -}}
+{{ if .languages.ruby }}
+brew "rbenv"
+{{ end -}}
 brew "fzf"
 brew "git"
 brew "neovim", args: ["--HEAD"]
@@ -12,12 +23,15 @@ brew "mas"
 brew "ripgrep"
 brew "tmux"
 brew "tree"
+{{ if not .work }}
+brew "youtube-dl"
+{{ end -}}
 
-{{ if eq .editor "code" }}
+{{- if eq .editor "code" }}
 cask "visual-studio-code"
-{{- else if eq .editor "nvim" -}}
+{{ else if eq .editor "nvim" }}
 cask "vimr"
-{{- end -}}
+{{ end }}
 cask "1password-cli"
 cask "adguard"
 cask "appcleaner"
@@ -25,17 +39,17 @@ cask "calibre"
 cask "little-snitch"
 cask "rectangle"
 
-{{- if not .work -}}
+{{- if not .work }}
 cask "qbittorrent"
 cask "gog-galaxy"
 cask "signal-beta"
 cask "steam"
-{{- end -}}
+{{ end -}}
 
 mas "1Password 7", id: 1333542190
-{{- if not .work -}}
+{{ if not .work -}}
 mas "Apple Configurator 2", id: 1037126344
-{{- end -}}
+{{ end -}}
 mas "Dark Reader for Safari", id: 1438243180
 mas "NotePlan 3", id: 1505432629
 mas "Reeder", id: 1529448980

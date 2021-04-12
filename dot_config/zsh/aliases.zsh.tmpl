@@ -53,7 +53,7 @@ alias ydl-aac='youtube-dl --extract-audio --audio-format aac'
 alias ydl-m4a='youtube-dl --extract-audio --audio-format m4a'
 
 zman() {
-  PAGER="less -g -s '+/^       "$1"'" man zshall
+	PAGER="less -g -s '+/^       "$1"'" man zshall
 }
 
 {{- if .languages.python }}
@@ -97,7 +97,7 @@ alias reallylogout='sudo launchctl bootout gui/$(id -u $(whoami))'
 __nan_has md5sum || alias md5sum="md5"
 # macOS has no `sha1sum`, so use `shasum` as a fallback
 __nan_has sha1sum || alias sha1sum="shasum"
-{{- end -}}
+{{- end }}
 
 g() { [[ $# = 0 ]] && git status --short . || git $*; }
 alias gi='git init'
