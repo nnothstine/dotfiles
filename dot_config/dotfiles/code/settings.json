@@ -1,5 +1,5 @@
 {
-  "editor.acceptSuggestionOnEnter": "on",
+  "editor.acceptSuggestionOnEnter": "off",
   "editor.codeLens": false,
   "editor.cursorStyle": "block",
   "editor.fontFamily": "SF Mono, Fira Code, Menlo, Monaco, 'Courier New', monospace",
@@ -9,7 +9,7 @@
   "editor.smoothScrolling": true,
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "recentlyUsed",
-  "editor.tabCompletion": "off",
+  "editor.tabCompletion": "on",
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": true,
   "explorer.confirmDelete": false,
@@ -21,6 +21,7 @@
   "git.enableSmartCommit": true,
   "html.format.endWithNewline": true,
   "python.showStartPage": false,
+  "python.formatting.provider": "black",
   "search.useGlobalIgnoreFiles": true,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
@@ -31,8 +32,12 @@
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "vscode-icons",
   "workbench.settings.enableNaturalLanguageSearch": false,
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/dotfiles/nvim/vscode.init.vim",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": true,
-  "python.formatting.provider": "black",
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim"
+  "python.analysis.cacheFolderPath": "$XDG_DATA_HOME/python",
+  "python.autoComplete.addBrackets": true,
+  "editor.minimap.enabled": false,
+  "editor.quickSuggestionsDelay": 5
 }

@@ -100,13 +100,14 @@ __nan_has sha1sum || alias sha1sum="shasum"
 {{- end }}
 
 g() { [[ $# = 0 ]] && git status --short . || git $*; }
-alias gi='git init'
-alias gf='git fetch'
-alias gs='git status'
 alias ga='git add'
 alias gaa='ga -A'
 alias gb='git branch'
 alias gbd='git branch -D'
+alias gcl='git clone'
 alias gco='git checkout'
+alias gf='git fetch'
+alias gi='git init'
 alias gp='git push'
 alias gpu='git pull'
+alias gs='git status'
