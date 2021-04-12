@@ -8,8 +8,11 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZINITDIR="$ZDOTDIR/zinit"
 export ZSH_CACHE="$XDG_CACHE_HOME/zsh"
 
+{{- if .work }}
+{{- else }}
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
+{{- end }}
 
 # export FZF_DEFAULT_COMMAND="rg --glob --files --ignore-file \"${DOTFILES}/shell/ag/dot.ignore\""
 
