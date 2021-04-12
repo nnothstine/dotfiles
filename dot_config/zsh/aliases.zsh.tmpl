@@ -32,7 +32,9 @@ alias dp="chezmoi apply"
 alias e="$EDITOR"
 # alias eal="e $DOTFILES/shell/zsh/aliases.zsh"
 
-alias sshkeygen="ssh-keygen -t rsa -b 4096 -C"
+# @see {@link https://blog.g3rt.nl/upgrade-your-ssh-keys.html}
+# Keep this up to date with latest security best practices
+alias sshkeygen='ssh-keygen -o -a 100 -t ed25519 -C'
 
 # sudo ops
 alias mine='sudo chown -R "$USER"'
@@ -58,6 +60,8 @@ zman() {
 alias py=python
 __nan_has python3 && alias py3=python3
 
+# https://snarky.ca/why-you-should-use-python-m-pip/
+alias pip='python -m pip'
 alias pir="pip install -r requirements.txt"
 {{- end -}}
 
@@ -85,8 +89,6 @@ alias br='b reinstall'
 alias bu='b uninstall'
 alias bs='b search'
 alias bz='bu --zap'
-
-alias log='/usr/bin/log'
 
 # TODO: Don't always assume a username of nnothstine
 alias reallylogout='sudo launchctl bootout gui/$(id -u $(whoami))'

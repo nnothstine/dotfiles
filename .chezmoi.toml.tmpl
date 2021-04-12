@@ -1,6 +1,7 @@
 {{ $headless := false }}
 {{ $hostname := .chezmoi.hostname }}
 {{ $transient := false }}
+{{ $onepass := true }}
 {{ $node := true }}
 {{ $python := true }}
 {{ $ruby := promptBool "ruby" }}
@@ -8,6 +9,7 @@
 {{ $editor := "code" }}
 {{ $beets := false }}
 {{ $ffmpeg := false }}
+{{ $docker := promptBool "docker" }}
 
 {{- if eq .chezmoi.hostname "x86" -}}
   {{ $work = true }}
@@ -24,6 +26,11 @@
   transient = {{ $transient }}
   work = {{ $work }}
   editor = {{ $editor | quote }}
+  onepass = {{ $onepass }}
+{{- if $onepass }}
+  vault = "c34opqgbm2gkddnmfozm5b7fye"
+  work_vault = "lwzrvehn7zf5tdmdvalxgpe5ry"
+{{- end }}
 [data.languages]
   python = {{ $python }}
   ruby = {{ $ruby }}
@@ -31,3 +38,4 @@
 [data.misc]
   beets = {{ $beets }}
   ffmpeg = {{ $ffmpeg }}
+  docker = {{ $docker }}
