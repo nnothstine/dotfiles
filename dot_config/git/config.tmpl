@@ -8,10 +8,18 @@
 [core]
     pager = less
     whitespace = trailing-space
+{{- if eq .editor "code" }}
+    editor = code --wait
+{{- end }}
 [color]
     ui = auto
 [diff]
     colorMoved = zebra
+{{- if eq .editor "code" }}
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+{{- end }}
 [fetch]
     prune = true
 [github]
