@@ -98,3 +98,15 @@ __nan_has md5sum || alias md5sum="md5"
 # macOS has no `sha1sum`, so use `shasum` as a fallback
 __nan_has sha1sum || alias sha1sum="shasum"
 {{- end -}}
+
+g() { [[ $# = 0 ]] && git status --short . || git $*; }
+alias gi='git init'
+alias gf='git fetch'
+alias gs='git status'
+alias ga='git add'
+alias gaa='ga -A'
+alias gb='git branch'
+alias gbd='git branch -D'
+alias gco='git checkout'
+alias gp='git push'
+alias gpu='git pull'
