@@ -39,5 +39,6 @@
   "python.analysis.cacheFolderPath": "$XDG_DATA_HOME/python",
   "python.autoComplete.addBrackets": true,
   "editor.minimap.enabled": false,
-  "editor.quickSuggestionsDelay": 5
+  "editor.quickSuggestionsDelay": 5,
+  "git.confirmSync": false
 }
