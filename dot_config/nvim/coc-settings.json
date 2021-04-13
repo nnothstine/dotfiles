@@ -1,0 +1,24 @@
+{
+  "coc.preferences.maxFileSize": "1MB",
+  "coc.preferences.formatOnType": true,
+  
+  "diagnostic.checkCurrentLine": false,
+  "diagnostic.displayByAle": false,
+  "diagnostic.enable": true,
+  "diagnostic.enableMessage": "always",
+  "diagnostic.enableSign": true,
+  "diagnostic.errorSign": "⚑",
+  "diagnostic.highlightOffset": 1000,
+  "diagnostic.hintSign": "⚑",
+  "diagnostic.infoSign": "⚑",
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+  "diagnostic.level": "hint",
+  "diagnostic.messageTarget": "float",
+  "diagnostic.refreshAfterSave": false,
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.signOffset": 99999999,
+  "diagnostic.virtualText": false,
+  "diagnostic.virtualTextPrefix": "» ",
+  "diagnostic.warningSign": "⚑",
+}
+
