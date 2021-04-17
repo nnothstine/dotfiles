@@ -1,15 +1,15 @@
-{{ $headless := false }}
-{{ $hostname := .chezmoi.hostname }}
-{{ $transient := false }}
-{{ $onepass := true }}
-{{ $node := true }}
-{{ $python := true }}
-{{ $ruby := promptBool "ruby" }}
-{{ $work := false }}
-{{ $editor := "code" }}
-{{ $beets := false }}
-{{ $ffmpeg := false }}
-{{ $docker := promptBool "docker" }}
+{{- $headless := false }}
+{{- $hostname := .chezmoi.hostname }}
+{{- $transient := false }}
+{{- $onepass := true }}
+{{- $node := true }}
+{{- $python := true }}
+{{- $ruby := promptBool "ruby" }}
+{{- $work := false }}
+{{- $editor := promptString "editor" }}
+{{- $beets := false }}
+{{- $ffmpeg := false }}
+{{- $docker := promptBool "docker" }}
 
 {{- if eq .chezmoi.hostname "x86" -}}
   {{ $work = true }}

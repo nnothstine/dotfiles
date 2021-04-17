@@ -1,5 +1,5 @@
 {
-  "editor.acceptSuggestionOnEnter": "off",
+  "editor.acceptSuggestionOnEnter": "smart",
   "editor.codeLens": false,
   "editor.cursorStyle": "block",
   "editor.fontFamily": "SF Mono, Fira Code, Menlo, Monaco, 'Courier New', monospace",
@@ -40,5 +40,12 @@
   "python.autoComplete.addBrackets": true,
   "editor.minimap.enabled": false,
   "editor.quickSuggestionsDelay": 5,
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
+  "vim.useSystemClipboard": true
 }

@@ -2,28 +2,28 @@
 
 source "$DOTFILES/env"
 
-{{- if eq .chezmoi.os "darwin" }} 
+{{- if eq .chezmoi.os "darwin" }}
 brew bundle install --file="$DOTFILES/darwin/Brewfile"
 {{ end -}}
 
 {{ if .languages.python }}
 __ensure_repo momo-lab/xxenv-latest $PYENV_ROOT/plugins/xxenv-latest
 [[ ! -d $PYENV_ROOT ]] && {
-    pyenv latest install && pyenv latest global
+  pyenv latest install && pyenv latest global
 }
 {{ end -}}
 
 {{- if .languages.node }}
 __ensure_repo momo-lab/xxenv-latest $NODENV_ROOT/plugins/xxenv-latest
 [[ ! -d $NODENV_ROOT ]] && {
-    nodenv latest install && nodenv latest global
+  nodenv latest install && nodenv latest global
 }
 {{ end -}}
 
 {{- if .languages.ruby }}
 __ensure_repo momo-lab/xxenv-latest $RBENV_ROOT/plugins/xxenv-latest
 [[ ! -d $RBENV_ROOT ]] && {
-    rbenv latest install && rbenv latest global
+  rbenv latest install && rbenv latest global
 }
 {{ end -}}
 
@@ -31,12 +31,7 @@ __ensure_repo momo-lab/xxenv-latest $RBENV_ROOT/plugins/xxenv-latest
 pip install beets
 {{ end -}}
 
-{{- if .misc.ffmpeg }}
-brew tap homebrew-ffmpeg/homebrew-ffmpeg
-brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac --with-chromaprint
-{{ end -}}
-
-{{- if eq .chezmoi.os "darwin" }} 
+{{- if eq .chezmoi.os "darwin" }}
 brew bundle cleanup --file="$DOTFILES/darwin/Brewfile" --force
 {{ end -}}
 
