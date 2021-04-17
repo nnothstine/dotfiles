@@ -32,8 +32,6 @@
   "workbench.enableExperiments": false,
   "workbench.iconTheme": "vscode-icons",
   "workbench.settings.enableNaturalLanguageSearch": false,
-  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "$HOME/.config/dotfiles/nvim/vscode.init.vim",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": true,
   "python.analysis.cacheFolderPath": "$XDG_DATA_HOME/python",
@@ -47,5 +45,9 @@
       "filenamePattern": "*.ipynb"
     }
   ],
-  "vim.useSystemClipboard": true
+  "vim.useSystemClipboard": true,
+  "vim.enableNeovim": true,
+  "python.languageServer": "Pylance",
+  "python.analysis.completeFunctionParens": true,
+  "git.autofetch": true,
 }

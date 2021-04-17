@@ -30,6 +30,12 @@ autoload -Uz compinit
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+export FZF_DEFAULT_COMMAND='rg --glob "" --files --hidden --ignore-file "$DOTFILES/rg/dot.ignore"'
+
+if [[ ! -d "$XDG_CACHE_HOME/zsh" ]]; then
+  mkdir -p "$XDG_CACHE_HOME/zsh"
+fi
+
 # Requires EXTENDED_GLOB=true; run compinit once every 24 hours, not on demand
 if [[ -n "$ZSH_CACHE/zcompdump"(#qN.mh+24) ]]; then
     compinit -i -d $ZSH_CACHE/zcompdump

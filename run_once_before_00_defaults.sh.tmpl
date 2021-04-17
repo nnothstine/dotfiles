@@ -1,5 +1,5 @@
-{{ if eq .chezmoi.os "darwin" -}}
 #!/usr/bin/env zsh
+{{- if eq .chezmoi.os "darwin" }}
 
 osascript -e 'tell application "System Preferences" to quit'
 sudo -v
@@ -566,6 +566,7 @@ defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
+{{- if eq .term "apple-terminal" }}
 # Use my theme by default in Terminal.app
 open "$(chezmoi source-path)/dot_config/dotfiles/darwin/NAN.terminal"
 
@@ -600,6 +601,7 @@ tell application "Terminal"
 	end repeat
 end tell
 EOD
+{{- end }}
 
 # Enable Secure Keyboard Entry in Terminal.app
 # See: https://security.stackexchange.com/a/47786/8918
@@ -657,7 +659,7 @@ sudo tmutil disable
 # Transmission
 # ----------------------------------------------------------------------------
 
-{{ if not .work }}
+{{- if not .work }}
 [[ -d "/Applications/Transmission.app" ]] && {
   # Use `~/Documents/Torrents` to store incomplete downloads
   defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
@@ -684,7 +686,7 @@ sudo tmutil disable
   # Randomize port on launch
   defaults write org.m0k.transmission RandomPort -bool true
 }
-{{ end }}
+{{- end }}
 
 # ============================================================================
 # Restart for changes
@@ -710,4 +712,4 @@ for app in "Activity Monitor" \
 done
 
 echo "Done. If you're seeing things not take effect, check whether Full Disk Access has been granted to Terminal."
-{{ end }}
+{{- end }}

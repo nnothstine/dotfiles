@@ -9,12 +9,12 @@ export ZINITDIR="$ZDOTDIR/zinit"
 export ZSH_CACHE="$XDG_CACHE_HOME/zsh"
 
 {{- if .work }}
+export LDFLAGS="-L/opt/brew/opt/zlib/lib"
+export CPPFLAGS="-I/opt/brew/opt/zlib/include"
 {{- else }}
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include"
 {{- end }}
-
-# export FZF_DEFAULT_COMMAND="rg --glob --files --ignore-file \"${DOTFILES}/shell/ag/dot.ignore\""
 
 typeset -gU cdpath fpath mailpath path
 
@@ -28,3 +28,5 @@ fpath=( $ZDOTDIR/functions $XDG_BIN_HOME $fpath )
 export LANG=${LANG:-en_US.UTF-8}
 export PAGER=less
 export LESSHISTFILE="$XDG_DATA_HOME/lesshst"
+
+source "$ZDOTDIR/env.zsh"

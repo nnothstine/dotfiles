@@ -4,36 +4,48 @@ source "$DOTFILES/env"
 
 {{- if eq .chezmoi.os "darwin" }}
 brew bundle install --file="$DOTFILES/darwin/Brewfile"
-{{ end -}}
 
-{{ if .languages.python }}
+directories=(
+  "$HOME/Projects"
+  "$HOME/Sandbox"
+)
+
+for i in $directories[@]; do
+  if [[ ! -d "$i" ]]; then
+    mkdir -p "$i"
+  fi
+done
+{{- end }}
+
+{{- if .languages.python }}
 __ensure_repo momo-lab/xxenv-latest $PYENV_ROOT/plugins/xxenv-latest
 [[ ! -d $PYENV_ROOT ]] && {
   pyenv latest install && pyenv latest global
 }
-{{ end -}}
+{{- end }}
 
 {{- if .languages.node }}
 __ensure_repo momo-lab/xxenv-latest $NODENV_ROOT/plugins/xxenv-latest
 [[ ! -d $NODENV_ROOT ]] && {
   nodenv latest install && nodenv latest global
 }
-{{ end -}}
+{{- end }}
 
 {{- if .languages.ruby }}
 __ensure_repo momo-lab/xxenv-latest $RBENV_ROOT/plugins/xxenv-latest
 [[ ! -d $RBENV_ROOT ]] && {
   rbenv latest install && rbenv latest global
 }
-{{ end -}}
+{{- end }}
 
-{{- if .misc.beets }}
-pip install beets
-{{ end -}}
+# {{- if eq .chezmoi.os "darwin" }}
+# brew bundle cleanup --file="$DOTFILES/darwin/Brewfile" --force
+# {{- end }}
 
-{{- if eq .chezmoi.os "darwin" }}
-brew bundle cleanup --file="$DOTFILES/darwin/Brewfile" --force
-{{ end -}}
+{{- if eq .term "iterm" }}
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$XDG_CONFIG_HOME/dotfiles/iterm"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+{{- end }}
 
 # We need this because the script freaks out if I say "no" to reinstalling the envs
 exit 0

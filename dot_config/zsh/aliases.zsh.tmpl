@@ -30,7 +30,9 @@ alias cdd="cd $XDG_DATA_HOME/chezmoi"
 alias dp="chezmoi apply"
 
 alias e='$EDITOR'
-# alias eal="e $DOTFILES_DATA/dot_config/zsh/aliases.zsh.tmpl"
+alias eal="e $DOTFILES_DATA/dot_config/zsh/aliases.zsh.tmpl"
+alias evr="e $DOTFILES_DATA/dot_config/nvim/init.vim"
+alias evp="e $DOTFILES_DATA/dot_config/nvim/plugins.vim"
 
 # @see {@link https://blog.g3rt.nl/upgrade-your-ssh-keys.html}
 # Keep this up to date with latest security best practices
@@ -103,6 +105,7 @@ g() { [[ $# = 0 ]] && git status --short . || git $*; }
 alias ga='git add'
 alias gaa='ga -A'
 alias gb='git branch'
+alias gba='git branch -a'
 alias gbd='git branch -D'
 alias gcl='git clone'
 alias gca='git commit --amend'

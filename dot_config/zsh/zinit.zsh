@@ -16,6 +16,9 @@ export ZSH_BOOKMARKS="$XDG_DATA_HOME/zshbookmarks"
 # ZSH extensions
 # ----------------------------------------------------------------------------
 
+zinit for pick"async.zsh" atload"prompt_pure_setup" src"pure.zsh" \
+  load 'sindresorhus/pure'
+
 # zinit lucid wait'[[ -n ${ZLAST_COMMANDS[(r)man*]} ]]'
 # zinit lucid trigger-load'!man'
 zinit for lucid trigger-load'!man' is-snippet \
@@ -27,15 +30,25 @@ zinit for lucid wait blockf atpull'zinit creinstall -q .' \
   'zsh-users/zsh-completions'
 
 if [[ -z $SSH_CONNECTION ]]; then
-  # TODO: Super slow with man pages right now; remove atload when fixed
-  zinit for lucid wait atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay;" \
-    atload"unset 'FAST_HIGHLIGHT[chroma-whatis]' 'FAST_HIGHLIGHT[chroma-man]'" \
-    'zdharma/fast-syntax-highlighting'
-
-  zinit for lucid wait atload'!_zsh_autosuggest_start' \
-    'zsh-users/zsh-autosuggestions'
+  # In-line best history match suggestion
+  # don't suggest lines longer than
+  export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=78
+  # as of v4.0 use ZSH/zpty module to async retrieve
   export ZSH_AUTOSUGGEST_USE_ASYNC=1
+  # Removed forward-char
+  export ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(vi-end-of-line)
+  export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+  export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-  zinit for pick"async.zsh" atload"prompt_pure_setup" src"pure.zsh" \
-    load 'sindresorhus/pure'
+  zinit lucid wait for \
+    atload'_zsh_autosuggest_start && bindkey "^n" autosuggest-accept' \
+    'zsh-users/zsh-autosuggestions' \
+    \
+    blockf atpull'zinit creinstall -q .' \
+    'zsh-users/zsh-completions' \
+    ;
+
+   # don't add wait, messes with zsh-autosuggest
+  zinit lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" for \
+    'zdharma/fast-syntax-highlighting'
 fi

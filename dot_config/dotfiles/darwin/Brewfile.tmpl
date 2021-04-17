@@ -1,71 +1,93 @@
-{{ if not .work }}
+{{- if not .work }}
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
-{{ end -}}
-{{- if .misc.ffmpeg }}
-tap homebrew-ffmpeg/homebrew-ffmpeg
 {{- end }}
 
-{{ if .languages.node }}
+brew "chezmoi"
+
+{{- if .misc.ffmpeg }}
+tap "homebrew-ffmpeg/homebrew-ffmpeg"
+brew "chromaprint"
+brew "homebrew-ffmpeg/ffmpeg/ffmpeg", args: ["with-chromaprint", "with-fdk-aac"]
+{{- end }}
+
+{{- if eq .editor "emacs" }}
+tap "railwaycat/emacsmacport"
+cask "emacs-mac"
+{{- end }}
+
+{{- if eq .editor "nvim" }}
+brew "neovim", args: ["--HEAD"]
+cask "vimr"
+{{- end }}
+
+{{- if .languages.node }}
 brew "nodenv"
 {{- end }}
+
+{{- if eq .editor "code" }}
+cask "visual-studio-code"
+{{- end }}
+
 {{- if .languages.python }}
 brew "pyenv"
 brew "pipenv"
 brew "pyenv-virtualenv"
 {{- end }}
+
 {{- if .languages.ruby }}
 brew "rbenv"
-{{-  end }}
-brew "chezmoi"
-{{- if .misc.ffmpeg }}
-brew "homebrew-ffmpeg/ffmpeg/ffmpeg", args: ["with-chromaprint", "with-fdk-aac"]
 {{- end }}
+
+brew "bat"
+brew "fd"
 brew "fzf"
+brew "gh"
 brew "git"
-brew "neovim", args: ["--HEAD"]
-brew "mas"
+brew "git-delta"
+brew "jq"
 brew "ripgrep"
 brew "tmux"
 brew "tree"
-{{- if not .work }}
-brew "youtube-dl"
-{{- end }}
-{{- if eq .editor "code" }}
-cask "visual-studio-code"
-{{- else if eq .editor "nvim" }}
-cask "vimr"
-{{- end }}
-cask "1password-cli"
+brew "mas"
+brew "shfmt" 
+brew "zoxide"
+
 cask "adguard"
 cask "appcleaner"
-cask "calibre"
-{{ if not .work -}}
-cask "finereader"
-{{ end -}}
 cask "little-snitch"
 cask "rectangle"
 
+{{- if eq .term "iterm" }}
+cask "iterm2"
+{{- end }}
+
 {{- if not .work }}
+brew "youtube-dl"
 cask "anki"
-cask "qbittorrent"
-cask "gog-galaxy"
+cask "calibre"
+cask "iina"
+cask "signal-beta"
+cask "transmission"
+mas "Apple Configurator 2", id: 1037126344
+{{- end }}
+
 {{- if .misc.ffmpeg }}
 cask "musicbrainz-picard"
 {{- end }}
-cask "signal-beta"
-cask "steam"
-{{ end -}}
 
+{{- if eq .pwm "1p" }}
 mas "1Password 7", id: 1333542190
-{{ if not .work -}}
-mas "Apple Configurator 2", id: 1037126344
-{{ end -}}
+{{- else if eq .pwm "bw" }}
+brew "bitwarden-cli"
+{{- end }}
+
+{{- if eq .browser "safari" }}
 mas "Dark Reader for Safari", id: 1438243180
-mas "NotePlan 3", id: 1505432629
 mas "Reeder", id: 1529448980
 mas "SponsorBlock port for YouTube - Skip Sponsorships", id: 1532163541
 mas "StopTheMadness", id: 1376402589
 mas "Vimari", id: 1480933944
+{{- end }}

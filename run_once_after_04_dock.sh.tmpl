@@ -1,32 +1,32 @@
 #!/usr/bin/env zsh
 
 __add_app_to_dock() {
-    app_name="${1}"
-    app_path=""
+  app_name="${1}"
+  app_path=""
 
-    # places to look for an application
-    declare -a system_paths=(
+  # places to look for an application
+  declare -a system_paths=(
     {{- if .work }}
     "/AppleInternal/Applications"
-    {{ end -}}
+    {{- end }}
     "/System/Applications"
     "/System/Applications/Utilities"
     "/System/Library/CoreServices"
     "/Applications"
-    );
+  )
 
-    # check the paths for the app
-    for spath in "${system_paths[@]}"; do
-        app=$(ls "${spath}" | grep -o "${app_name}.app" | uniq | sort | head -n1)
-        if [[ -n "${app}" ]]; then
-            app_path="${spath}/${app}"
-        fi
-    done
+  # check the paths for the app
+  for spath in "${system_paths[@]}"; do
+    app=$(ls "${spath}" | grep -o "${app_name}.app" | uniq | sort | head -n1)
+    if [[ -n "${app}" ]]; then
+      app_path="${spath}/${app}"
+    fi
+  done
 
-    if open -Ra "${app_path}"; then
-        echo "Dock: $app_path added to the Dock."
+  if open -Ra "${app_path}"; then
+    echo "Dock: $app_path added to the Dock."
 
-        defaults write com.apple.dock persistent-apps -array-add "<dict>
+    defaults write com.apple.dock persistent-apps -array-add "<dict>
             <key>tile-data</key>
             <dict>
                 <key>file-data</key>
@@ -38,9 +38,9 @@ __add_app_to_dock() {
                 </dict>
             </dict>
         </dict>"
-    else
-        echo "ERROR: Application $1 not found." 1>&2
-    fi
+  else
+    echo "ERROR: Application $1 not found." 1>&2
+  fi
 }
 
 __add_spacer_to_dock() {
@@ -55,7 +55,8 @@ __clear_dock() {
 
 __reset_dock() {
   # reset macOS Dock to default settings
-  defaults write com.apple.dock; killall Dock
+  defaults write com.apple.dock
+  killall Dock
 }
 
 # WARNING: permanently clears existing dock
@@ -63,27 +64,20 @@ __clear_dock
 
 __add_app_to_dock "Launchpad"
 __add_app_to_dock "Safari"
-{{ if .work -}}
+{{- if .work }}
 __add_app_to_dock "Mail"
-{{ else -}}
+{{- else }}
 __add_app_to_dock "Signal Beta"
-{{ end -}}
-__add_app_to_dock "NotePlan 3"
+{{- end }}
 __add_app_to_dock "Photos"
 __add_app_to_dock "Books"
 __add_app_to_dock "Music"
 __add_app_to_dock "App Store"
-{{ if not .work -}} 
-__add_app_to_dock "qBittorrent"
-__add_app_to_dock "Shadow"
-__add_app_to_dock "Steam"
-__add_app_to_dock "Calibre"
-{{ end -}}
-{{ if eq .editor "code" -}}
+{{- if eq .editor "code" }}
 __add_app_to_dock "Visual Studio Code"
-{{ else if eq .editor "nvim" -}}
+{{- else if eq .editor "nvim" }}
 __add_app_to_dock "VimR"
-{{ end -}}
+{{- end }}
 __add_app_to_dock "Terminal"
 __add_app_to_dock "System Preferences"
 

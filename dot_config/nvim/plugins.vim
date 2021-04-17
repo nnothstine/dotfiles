@@ -53,6 +53,7 @@ Plug 'itchyny/lightline.vim'
 
 " Doesn't seem to work in after/plugin...
 let g:fzf_command_prefix = 'FZF'
+" TODO: Don't assume this prefix.
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 

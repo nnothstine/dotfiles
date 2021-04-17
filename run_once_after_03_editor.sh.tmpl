@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+{{- if eq .editor "code" }}
+extensions=(
+    asvetliakov.vscode-neovim
+    EditorConfig.EditorConfig
+    foxundermoon.shell-format
+    golang.go
+    ms-python.python
+    vscode-icons-team.vscode-icons
+)
+
+for extension in ${extensions[@]}; do
+    code --force --install-extension $extension
+done
+{{ end -}}
+
+{{- if (and (eq .editor "nvim") .languages.python) }}
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+latest_python="$(pyenv latest)"
+pyenv virtualenv $latest_python neovim3 \
+    && pyenv activate neovim3 \
+    && python -m pip install --upgrade pip \
+    && python -m pip install pynvim \
+    && pyenv deactivate
+
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+nvim +PlugInstall +PlugUpdate +PlugClean +qa
+{{- end }}

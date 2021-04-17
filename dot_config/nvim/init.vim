@@ -4,18 +4,14 @@
 
 " unnecessary for nvim, possibly still useful for vim
 set nocompatible
-let mapleader="\<Space>"
-let g:vdotdir= expand($VDOTDIR)
+let mapleader = "\<Space>"
+let g:vdotdir = expand("$DOTFILES_DATA/dot_config/nvim")
+let g:zdotdir = expand("$DOTFILES_DATA/dot_config/zsh")
 
 if filereadable(expand("$VDOTDIR/plugins.vim"))
     call plug#begin("$VDOTDIR/vendor")
     execute 'source ' . g:vdotdir . '/plugins.vim'
     call plug#end()
-endif
-
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 set encoding=utf-8
@@ -50,9 +46,11 @@ set updatetime=750
 set noshowcmd
 set noshowmode
 
-if !$TERM_PROGRAM ==# "Apple_Terminal"
-  set termguicolors
-endif
+let s:truecolor = has('termguicolors')
+      \ && $COLORTERM ==# 'truecolor'
+      \ && $TERM_PROGRAM !=# 'Apple_Terminal'
+
+if s:truecolor | let &termguicolors = 1 | endif
 
 " ----------------------------------------------------------------------------
 " Input
@@ -205,15 +203,6 @@ set formatoptions-=alo
 " ==========================================================================
 
 let g:sessions_dir = "$VDOTDIR/sessions"
-
-" ============================================================================
-" Neovim-only mappings
-" ============================================================================
-
-nnoremap <special> <A-k>      <C-w>k
-nnoremap <special> <A-j>      <C-w>j
-nnoremap <special> <A-h>      <C-w>h
-nnoremap <special> <A-l>      <C-w>l
 
 " ==========================================================================
 " Host providers

@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+source "$DOTFILES/env"
+
+{{- if eq .chezmoi.os "darwin" }}
+if ! __nan_has "brew"; then
+  {{- if .work }}
+  xcrun git clone https://github.pie.apple.com/homebrew/brew.git /tmp/brew
+  sudo mv /tmp/brew /opt/brew
+  {{- else }}
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  {{- end }}
+fi
+cp -r /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/* /Library/Fonts/
+{{- end }}
