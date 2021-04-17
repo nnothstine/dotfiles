@@ -43,6 +43,7 @@ Plug 'neoclide/coc-pairs'
 Plug 'honza/vim-snippets'
 
 Plug 'machakann/vim-highlightedyank'
+Plug 'airblade/vim-rooter'
 
 " --------------------------------------------------------------------------
 " Modeline

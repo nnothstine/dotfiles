@@ -14,8 +14,8 @@ if filereadable(expand("$VDOTDIR/plugins.vim"))
 endif
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    execute 'silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 set encoding=utf-8
@@ -233,6 +233,8 @@ let s:pyenv_py3 = s:FindExecutable([
   \ '/usr/bin/python3'
   \ ])
 let g:python3_host_prog = s:pyenv_py3
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
 
 " ==========================================================================
 " Autocommands

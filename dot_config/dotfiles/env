@@ -6,7 +6,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_BIN_HOME="$HOME/.local/bin"
 
 export DOTFILES="$HOME/.config/dotfiles"
-export DOTFILES_DATA="$XDG_DATA_HOME/dotfiles"
+export DOTFILES_DATA="$XDG_DATA_HOME/chezmoi"
 export DOTFILES_ASSETS="$DOTFILES/assets"
 
 for dir in "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_BIN_HOME" "$DOTFILES_DATA"; do
@@ -115,9 +115,7 @@ __nan_link() {
 }
 
 __nan_load_all() {
-  for file in "$DOTFILES_DATA"/*.topic/"$1"; do
-    [[ -e $file ]] && source "$file"
-  done
+  pass 
 }
 
 __ensure_repo() {

@@ -24,13 +24,13 @@ alias grep='grep --color=auto'
 alias ag="ag -p $XDG_CONFIG_HOME/ag/agignore"
 alias rg='rg'
 
-alias curl="curl --config '$DOTFILES/shell/curl/curlrc'"
+alias curl="curl --config '$DOTFILES/curl/dot.curlrc'"
 
 alias cdd="cd $XDG_DATA_HOME/chezmoi"
 alias dp="chezmoi apply"
 
-alias e="$EDITOR"
-# alias eal="e $DOTFILES/shell/zsh/aliases.zsh"
+alias e='$EDITOR'
+# alias eal="e $DOTFILES_DATA/dot_config/zsh/aliases.zsh.tmpl"
 
 # @see {@link https://blog.g3rt.nl/upgrade-your-ssh-keys.html}
 # Keep this up to date with latest security best practices
@@ -105,6 +105,8 @@ alias gaa='ga -A'
 alias gb='git branch'
 alias gbd='git branch -D'
 alias gcl='git clone'
+alias gca='git commit --amend'
+alias gcm='git commit -m'
 alias gco='git checkout'
 alias gf='git fetch'
 alias gi='git init'
