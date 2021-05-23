@@ -8,7 +8,7 @@ endfunction
 augroup filetypedetect
   autocmd! BufNewFile,BufRead * call s:SetByShebang() 
   autocmd! BufNewFile,BufRead *.plist setfiletype xml
-  autocmd! BufNewFile,BufRead *.zsh.tmpl setfiletype xml
+  autocmd! BufNewFile,BufRead *.zsh.tmpl setfiletype zsh
 augroup END
 
 " autocmd! FileType * set formatoptions-=o

@@ -38,10 +38,6 @@ __ensure_repo momo-lab/xxenv-latest $RBENV_ROOT/plugins/xxenv-latest
 }
 {{- end }}
 
-# {{- if eq .chezmoi.os "darwin" }}
-# brew bundle cleanup --file="$DOTFILES/darwin/Brewfile" --force
-# {{- end }}
-
 {{- if eq .term "iterm" }}
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$XDG_CONFIG_HOME/dotfiles/iterm"
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
