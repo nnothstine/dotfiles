@@ -64,21 +64,23 @@ __clear_dock
 
 __add_app_to_dock "Launchpad"
 __add_app_to_dock "Safari"
-{{- if .work }}
 __add_app_to_dock "Mail"
-{{- else }}
+{{- if not .work }}
 __add_app_to_dock "Signal Beta"
 {{- end }}
 __add_app_to_dock "Photos"
+__add_app_to_dock "Maps"
 __add_app_to_dock "Books"
 __add_app_to_dock "Music"
 __add_app_to_dock "App Store"
 {{- if eq .editor "code" }}
 __add_app_to_dock "Visual Studio Code"
-{{- else if eq .editor "nvim" }}
-__add_app_to_dock "VimR"
 {{- end }}
+{{- if eq .term "apple-terminal"}}
 __add_app_to_dock "Terminal"
+{{- else if eq .term "iterm" }}
+__add_app_to_dock "iTerm"
+{{- end }}
 __add_app_to_dock "System Preferences"
 
 killall Dock
