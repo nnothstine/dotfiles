@@ -4,6 +4,8 @@
 <dict>
 	<key>AllowClipboardAccess</key>
 	<true/>
+	<key>AlternateMouseScroll</key>
+	<true/>
 	<key>AutoHideTmuxClientSession</key>
 	<true/>
 	<key>CloseBookmarksWindowAfterOpening</key>
@@ -1046,7 +1048,7 @@
 				<real>0.31764706969261169</real>
 			</dict>
 			<key>Mouse Reporting</key>
-			<false/>
+			<true/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>

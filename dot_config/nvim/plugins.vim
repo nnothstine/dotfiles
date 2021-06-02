@@ -28,12 +28,19 @@ Plug 'junegunn/vim-easy-align'
 
 let g:coc_global_extensions = [
     \ 'coc-diagnostic',
+    \ 'coc-eslint',
     \ 'coc-git',
-    \ 'coc-solargraph',
-    \ 'coc-sh',
+    \ 'coc-html',
+    \ 'coc-json',
+    \ 'coc-git',
     \ 'coc-pairs',
+    \ 'coc-prettier',
+    \ 'coc-pyright',
+    \ 'coc-sh',
     \ 'coc-snippets',
+    \ 'coc-solargraph',
     \ 'coc-vimlsp',
+    \ 'coc-yaml',
     \]
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -53,8 +60,8 @@ Plug 'itchyny/lightline.vim'
 
 " Doesn't seem to work in after/plugin...
 let g:fzf_command_prefix = 'FZF'
-" TODO: Don't assume this prefix.
-Plug '/usr/local/opt/fzf'
+let g:fzf_path = isdirectory("/AppleInternal") ? "/opt/brew/opt/fzf" : '/usr/local/opt/fzf'
+Plug g:fzf_path
 Plug 'junegunn/fzf.vim'
 
 Plug 'sbdchd/neoformat', PlugIf(has('nvim'))
@@ -78,6 +85,26 @@ Plug 'Shougo/echodoc.vim'
 Plug 'delphinus/vim-auto-cursorline'
 " Plug 'jiangmiao/auto-pairs'
 " Plug 'Krasjet/auto.pairs'
+
+" --------------------------------------------------------------------------
+" Language: CSS
+" --------------------------------------------------------------------------
+
+Plug 'hail2u/vim-css3-syntax'
+Plug 'cakebaker/scss-syntax.vim', { 'for': [ 'scss' ] }
+
+" --------------------------------------------------------------------------
+" Language: Hoon
+" --------------------------------------------------------------------------
+
+Plug 'urbit/hoon.vim'
+
+" --------------------------------------------------------------------------
+" Language: JavaScript
+" --------------------------------------------------------------------------
+
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " --------------------------------------------------------------------------
 " Language: Python
