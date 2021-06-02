@@ -10,7 +10,7 @@ let g:neomake_warning_sign  = { 'text': '⚑', 'texthl': 'NeomakeWarningSign' }
 let g:neomake_message_sign  = { 'text': '⚑', 'texthl': 'NeomakeMessageSign' }
 let g:neomake_info_sign     = { 'text': '⚑', 'texthl': 'NeomakeInfoSign' }
 
-function! nan#OnBattery()
+function! NanOnBattery()
   if has('macunix')
     return match(system('pmset -g batt'), "Now drawing from 'Battery Power'") != -1
   elseif has('unix')
@@ -19,7 +19,7 @@ function! nan#OnBattery()
   return 0
 endfunction
 
-if nan#OnBattery()
+if NanOnBattery()
   call neomake#configure#automake('w')
 else
   call neomake#configure#automake('nw', 1000)
