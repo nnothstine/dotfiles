@@ -19,6 +19,6 @@
   "diagnostic.signOffset": 99999999,
   "diagnostic.virtualText": false,
   "diagnostic.virtualTextPrefix": "» ",
-  "diagnostic.warningSign": "⚑",
+  "diagnostic.warningSign": "⚑"
 }
 

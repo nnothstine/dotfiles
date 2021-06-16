@@ -65,6 +65,7 @@ Plug g:fzf_path
 Plug 'junegunn/fzf.vim'
 
 Plug 'sbdchd/neoformat', PlugIf(has('nvim'))
+let g:neoformat_enabled_python = ['black']
 
 Plug 'neomake/neomake', PlugIf(has('nvim'))
 

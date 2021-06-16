@@ -39,15 +39,14 @@
   "editor.minimap.enabled": false,
   "editor.quickSuggestionsDelay": 5,
   "git.confirmSync": false,
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
   "vim.useSystemClipboard": true,
-  "vim.enableNeovim": true,
   "python.languageServer": "Pylance",
   "python.analysis.completeFunctionParens": true,
   "git.autofetch": true,
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.enableNeovim": true,
+  "workbench.colorTheme": "One Dark Pro",
 }
