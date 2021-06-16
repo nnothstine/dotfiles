@@ -55,7 +55,7 @@ alias ydl-aac='youtube-dl --extract-audio --audio-format aac'
 alias ydl-m4a='youtube-dl --extract-audio --audio-format m4a'
 
 zman() {
-	PAGER="less -g -s '+/^       "$1"'" man zshall
+  PAGER="less -g -s '+/^       "$1"'" man zshall
 }
 
 {{- if .languages.python }}
@@ -116,3 +116,5 @@ alias gi='git init'
 alias gp='git push'
 alias gpu='git pull'
 alias gs='git status'
+
+alias j='zoxide'

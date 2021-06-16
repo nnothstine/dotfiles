@@ -42,3 +42,4 @@ if [[ -n "$ZSH_CACHE/zcompdump"(#qN.mh+24) ]]; then
 else
     compinit -C -d $ZSH_CACHE/zcompdump
 fi
+
