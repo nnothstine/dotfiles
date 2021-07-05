@@ -18,10 +18,6 @@ for i in $directories[@]; do
 done
 {{- end }}
 
-{{- if eq .pwm "1p" }}
-eval $(op signin my.1password.com niklas@nothstine.io)
-{{- end }}
-
 {{- if .languages.python }}
 PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 __ensure_repo momo-lab/xxenv-latest $PYENV_ROOT/plugins/xxenv-latest

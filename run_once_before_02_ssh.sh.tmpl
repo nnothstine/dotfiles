@@ -1,7 +1,0 @@
-{{ if ne .chezmoi.os "windows" -}}
-#!/usr/bin/env zsh
-
-{{ if eq .pwm "1p" -}}
-eval $(op signin my)
-{{- end }}
-{{- end }}

@@ -5,6 +5,8 @@ README.md
 {{ if ne .chezmoi.os "windows" }}
 dot_config/pwsh/
 dot_config/windows_terminal/
+dot_config/winget/
+dot_config/pwsh/
 AppData/
 {{ end }}
 
