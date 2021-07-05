@@ -34,6 +34,7 @@
 {{- end -}}
 
 {{- $term := "iterm" -}}
+{{- $isWsl := (env "IS_WSL") | not | not -}}
 
 {{- if eq .chezmoi.hostname "x86" -}}
   {{ $work = true }}
@@ -61,6 +62,7 @@
   work = {{ $work }}
   vault = "c34opqgbm2gkddnmfozm5b7fye"
   work_vault = "lwzrvehn7zf5tdmdvalxgpe5ry"
+  is_wsl = {{ $isWsl }}
 [data.languages]
   node = {{ $node }}
   python = {{ $python }}

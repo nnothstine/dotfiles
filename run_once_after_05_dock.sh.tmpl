@@ -1,3 +1,4 @@
+{{ if ne .chezmoi.os "windows" -}}
 #!/usr/bin/env zsh
 
 __add_app_to_dock() {
@@ -85,3 +86,4 @@ __add_app_to_dock "iTerm"
 __add_app_to_dock "System Preferences"
 
 killall Dock
+{{- end }}

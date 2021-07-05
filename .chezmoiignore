@@ -1,2 +1,21 @@
 install.sh
+LICENSE
 README.md
+
+{{ if ne .chezmoi.os "windows" }}
+dot_config/pwsh/
+dot_config/windows_terminal/
+AppData/
+{{ end }}
+
+{{ if ne .chezmoi.os "darwin" }}
+dot_config/
+dot_config/dotfiles/darwin/
+dot_config/dotfiles/iterm/
+private_Library/
+{{ end }}
+
+{{ if eq .chezmoi.os "windows" }}
+dot_config/dotfiles/zsh/
+empty_dot_hushlogin
+{{ end }}

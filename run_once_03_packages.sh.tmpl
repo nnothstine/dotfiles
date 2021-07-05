@@ -1,3 +1,4 @@
+{{ if ne .chezmoi.os "windows" -}}
 #!/usr/bin/env zsh
 
 source "$HOME/.config/dotfiles/env"
@@ -49,6 +50,4 @@ __ensure_repo momo-lab/xxenv-latest $RBENV_ROOT/plugins/xxenv-latest
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$XDG_CONFIG_HOME/dotfiles/iterm"
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 {{- end }}
-
-# We need this because the script freaks out if I say "no" to reinstalling the envs
-exit 0
+{{- end}}

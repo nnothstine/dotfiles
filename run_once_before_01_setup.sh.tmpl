@@ -1,3 +1,4 @@
+{{ if ne .chezmoi.os "windows" -}}
 #!/usr/bin/env zsh
 
 DOTFILES="$HOME/.local/share/chezmoi/dot_config/dotfiles"
@@ -13,4 +14,5 @@ if ! __nan_has "brew"; then
   {{- end }}
 fi
 cp -r /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/* /Library/Fonts/
+{{- end }}
 {{- end }}
