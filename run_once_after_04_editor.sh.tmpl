@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 {{- if eq .editor "code" }}
 extensions=(
-    asvetliakov.vscode-neovim
     EditorConfig.EditorConfig
     foxundermoon.shell-format
     golang.go
     ms-python.python
     vscode-icons-team.vscode-icons
+    vscodevim.vim
 )
 
 for extension in ${extensions[@]}; do

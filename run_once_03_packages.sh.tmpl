@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source "$DOTFILES/env"
+source "$HOME/.config/dotfiles/env"
 
 {{- if eq .chezmoi.os "darwin" }}
 brew bundle install --file="$DOTFILES/darwin/Brewfile"
@@ -17,7 +17,12 @@ for i in $directories[@]; do
 done
 {{- end }}
 
+{{- if eq .pwm "1p" }}
+eval $(op signin my.1password.com niklas@nothstine.io)
+{{- end }}
+
 {{- if .languages.python }}
+PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 __ensure_repo momo-lab/xxenv-latest $PYENV_ROOT/plugins/xxenv-latest
 [[ ! -d $PYENV_ROOT ]] && {
   pyenv latest install && pyenv latest global
@@ -25,6 +30,7 @@ __ensure_repo momo-lab/xxenv-latest $PYENV_ROOT/plugins/xxenv-latest
 {{- end }}
 
 {{- if .languages.node }}
+NODENV_ROOT="$XDG_DATA_HOME/nodenv"
 __ensure_repo momo-lab/xxenv-latest $NODENV_ROOT/plugins/xxenv-latest
 [[ ! -d $NODENV_ROOT ]] && {
   nodenv latest install && nodenv latest global
@@ -32,6 +38,7 @@ __ensure_repo momo-lab/xxenv-latest $NODENV_ROOT/plugins/xxenv-latest
 {{- end }}
 
 {{- if .languages.ruby }}
+RBENV_ROOT="$XDG_DATA_HOME/rbenv"
 __ensure_repo momo-lab/xxenv-latest $RBENV_ROOT/plugins/xxenv-latest
 [[ ! -d $RBENV_ROOT ]] && {
   rbenv latest install && rbenv latest global

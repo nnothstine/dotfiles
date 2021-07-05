@@ -40,7 +40,8 @@
   "editor.quickSuggestionsDelay": 5,
   "git.confirmSync": false,
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+    "*.ipynb": "jupyter.notebook.ipynb",
+    "*.sh.tmpl": "shellscript"
   },
   "vim.useSystemClipboard": true,
   "python.languageServer": "Pylance",

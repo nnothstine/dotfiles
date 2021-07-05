@@ -137,10 +137,10 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 defaults write com.apple.screencapture disable-shadow -bool true
 
 # Save screenshots to Desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+defaults write com.apple.screencapture location -string "${HOME}/Pictures"
 
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string "png"
+# Save screenshots in HEIC format (other options: BMP, GIF, JPG, PDF, PNG, TIFF)
+defaults write com.apple.screencapture type -string "heic"
 
 # Enable subpixel font rendering on non-Apple LCDs
 # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
@@ -566,7 +566,6 @@ defaults write com.apple.Safari SafariGeolocationPermissionPolicy -int 0
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
-{{- if eq .term "apple-terminal" }}
 # Use my theme by default in Terminal.app
 open "$(chezmoi source-path)/dot_config/dotfiles/darwin/NAN.terminal"
 
@@ -601,7 +600,6 @@ tell application "Terminal"
 	end repeat
 end tell
 EOD
-{{- end }}
 
 # Enable Secure Keyboard Entry in Terminal.app
 # See: https://security.stackexchange.com/a/47786/8918
