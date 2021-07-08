@@ -50,4 +50,7 @@
   "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.enableNeovim": true,
   "workbench.colorTheme": "One Dark Pro",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
 }

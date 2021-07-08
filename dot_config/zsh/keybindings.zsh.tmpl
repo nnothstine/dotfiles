@@ -6,11 +6,22 @@ bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins ' ' magic-space
 
+# Yank to the system clipboard
+function vi-yank-xclip {
+  zle vi-yank
+  {{- if eq .chezmoi.os "darwin" }}
+  echo "$CUTBUFFER" | pbcopy -i
+  {{- else }}
+  echo "$CUTBUFFER" | xclip -i
+  {{- end }}
+}
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
+
 # Open current prompt in external editor
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^ ' edit-command-line
-
 
 # --------------------------------------------------------------------------
 # Surround

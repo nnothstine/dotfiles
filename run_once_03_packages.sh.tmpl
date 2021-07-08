@@ -21,25 +21,20 @@ done
 {{- if .languages.python }}
 PYENV_ROOT="$XDG_DATA_HOME/pyenv"
 __ensure_repo momo-lab/xxenv-latest $PYENV_ROOT/plugins/xxenv-latest
-[[ ! -d $PYENV_ROOT ]] && {
   pyenv latest install && pyenv latest global
-}
+  python install -r "$DOTFILES/python/requirements.txt"
 {{- end }}
 
 {{- if .languages.node }}
 NODENV_ROOT="$XDG_DATA_HOME/nodenv"
 __ensure_repo momo-lab/xxenv-latest $NODENV_ROOT/plugins/xxenv-latest
-[[ ! -d $NODENV_ROOT ]] && {
   nodenv latest install && nodenv latest global
-}
 {{- end }}
 
 {{- if .languages.ruby }}
 RBENV_ROOT="$XDG_DATA_HOME/rbenv"
 __ensure_repo momo-lab/xxenv-latest $RBENV_ROOT/plugins/xxenv-latest
-[[ ! -d $RBENV_ROOT ]] && {
   rbenv latest install && rbenv latest global
-}
 {{- end }}
 
 {{- if eq .term "iterm" }}
